@@ -8,17 +8,17 @@ chapter: false
 
 ### Student Information:
 
-&emsp; **Full Name:** Pham Duy Khanh
+&emsp; **Full Name:** Văn Thành Đạt
 
-&emsp; **Phone Number:** 0965505617
+&emsp; **Phone Number:** 0797624945
 
-&emsp; **Email:** khanhp2004@gmail.com
+&emsp; **Email:** vanthanhdat147@gmail.com
 
 &emsp; **University:** Saigon University
 
 &emsp; **Major:** Information Technology
 
-&emsp; **Class:** DCT1221
+&emsp; **Class:** DCT1223
 
 &emsp; **Internship Company:** Amazon Web Services Viet Nam Company Limited
 
@@ -26,7 +26,7 @@ chapter: false
 
 &emsp; **Internship Duration:** From 22/06/2026 to 15/08/2026
 
-![1786424209769](image/_index/1786424209769.jpg)
+![1786502005936](image/_index/1786502005936.jpg)
 
 ### Report Content
 

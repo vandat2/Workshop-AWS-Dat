@@ -8,17 +8,17 @@ chapter: false
 
 ### Thông tin sinh viên:
 
-&emsp; **Họ và tên:** Phạm Duy Khánh
+&emsp; **Họ và tên:** Văn Thành Đạt
 
-&emsp; **Số điện thoại:** 0965505617
+&emsp; **Số điện thoại:** 0797624945
 
-&emsp; **Email:** khanhp2004@gmail.com
+&emsp; **Email:** vanthanhdat147@gmail.com
 
 &emsp; **Trường:** Đại học Sài Gòn
 
 &emsp; **Ngành:** Công nghệ thông tin
 
-&emsp; **Lớp:** DCT1221
+&emsp; **Lớp:** DCT1223
 
 &emsp; **Công ty thực tập:** Công ty TNHH Amazon Web Services Viet Nam
 
@@ -26,7 +26,7 @@ chapter: false
 
 &emsp; **Thời gian thực tập:** Từ ngày 22/06/2026 đến ngày 14/08/2026
 
-![1786424178247](image/_index.vi/1786424178247.jpg)
+![1786501867478](image/_index.vi/1786501867478.jpg)
 
 ### Nội dung báo cáo
 
