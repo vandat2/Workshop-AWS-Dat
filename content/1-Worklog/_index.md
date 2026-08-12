@@ -5,18 +5,18 @@ weight: 1
 chapter: false
 pre: " <b> 1. </b> "
 ---
-**Week 1:** [Got familiar with the internship environment and built the initial foundational RAG modules for the Law-Chatbot project.](1.1-week1/)
+**Week 1:** [Setting up the foundation for the Law-Chatbot project, getting familiar with the workflow, and building basic components of the RAG pipeline.](1.1-week1/)
 
-**Week 2:** [Completed the batched legal data processing pipeline, optimized index building, and wrote the project proposal.](1.2-week2/)
+**Week 2:** [Improving the data preparation process, completing index building steps, and exploring PostgreSQL pgvector along with Amazon Bedrock.](1.2-week2/)
 
-**Week 3:** [Built a complete RAG Q&amp;A flow, integrated the Chainlit chat interface, and designed the initial AWS architecture.](1.3-week3/)
+**Week 3:** [Completing the RAG Q&amp;A flow, integrating Chainlit with the system, and developing the initial AWS architecture plan.](1.3-week3/)
 
-**Week 4:** [Refined the chatbot interface and researched application deployment using Docker along with AWS networking infrastructure.](1.4-week4/)
+**Week 4:** [Refining the chatbot interface, exploring Docker packaging models, and studying AWS networking infrastructure to prepare for deployment.](1.4-week4/)
 
-**Week 5:** [Migrated the vector store to Amazon RDS PostgreSQL pgvector, experimented with HNSW/IVFFlat indexes, and benchmarked system performance.](1.5-week5/)
+**Week 5:** [Migrating the vector store to Amazon RDS PostgreSQL pgvector, experimenting with HNSW/IVFFlat indexes, and measuring system performance.](1.5-week5/)
 
-**Week 6:** [Tested the end-to-end RAG chatbot, optimized response quality, and designed chat history storage using DynamoDB alongside CloudWatch/SNS monitoring.](1.6-week6/)
+**Week 6:** [Testing the entire chatbot flow, improving stability, and establishing direction for monitoring, alerting, and conversation history storage.](1.6-week6/)
 
-**Week 7:** [Integrated the Streamlit UI, FastAPI backend, Cognito authentication, RBAC authorization, and an automated document ingestion flow using S3, SQS, Lambda, and CloudFormation.](1.7-week7/)
+**Week 7:** [Connecting Streamlit with FastAPI and core RAG, implementing Cognito authentication and user authorization, and building the document ingestion workflow through AWS services.](1.7-week7/)
 
-**Week 8:** [Finalized Docker/EC2 deployment configurations, conducted security reviews, and completed all internship reports and project summaries.](1.8-week8/)
+**Week 8:** [Completing Docker/EC2 deployment configuration, reviewing security, and finalizing internship reports along with the project summary meeting.](1.8-week8/)

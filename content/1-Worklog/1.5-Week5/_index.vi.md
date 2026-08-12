@@ -7,20 +7,20 @@ pre: " <b> 1.5. </b> "
 ---
 ### Mục tiêu tuần 5:
 
-- Chuyển vector store sang Amazon RDS PostgreSQL pgvector
-- Tối ưu truy vấn vector search và bắt đầu đo hiệu năng hệ thống
+- Đưa hệ thống lưu trữ vector từ môi trường phát triển cục bộ lên PostgreSQL sử dụng pgvector trên Amazon RDS.
+- Khảo sát các phương án tăng tốc truy vấn vector và bắt đầu xây dựng số liệu đánh giá thời gian xử lý của từng thành phần.
 
 ### Các công việc cần triển khai trong tuần này:
 
-| Thứ | Công việc                                                                                                                                                                                                                                                              | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                                      |
-| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- | ------------------ | ------------------------------------------------------ |
-| 2    | - Chuyển hướng vector store từ local sang Amazon RDS PostgreSQL pgvector.<br />- Cấu hình các biến môi trường kết nối RDS.<br />- Kiểm tra kết nối PostgreSQL từ ứng dụng.                                                                         | 20/07/2026       | 20/07/2026         |                                                        |
-| 3    | - Cập nhật VectorStore hỗ trợ FAISS/SQLite khi chạy local và PostgreSQL pgvector khi triển khai cloud.<br />- Tạo bảng legal_chunks và cột embedding dạng vector trong PostgreSQL.<br />- Kiểm tra quá trình insert chunk và embedding vào database. | 21/07/2026       | 21/07/2026         |                                                        |
-| 4    | - Tìm hiểu và triển khai tìm kiếm cosine similarity bằng pgvector.<br />- Tối ưu truy vấn RDS.<br />- Bổ sung timeout cho truy vấn PostgreSQL.                                                                                                            | 22/07/2026       | 22/07/2026         | [aws.amazon.com/vi/rds](https://aws.amazon.com/vi/rds/) |
-| 5    | - Tìm hiểu và thử nghiệm index HNSW/IVFFlat cho pgvector.<br />- Viết script create_hnsw_index.py và create_ivfflat_index.py.<br />- Bổ sung benchmark và đo latency cho retrieval, embedding, DB search và LLM.                                           | 23/07/2026       | 23/07/2026         |                                                        |
-| 6    | - Kiểm thử lại pipeline hỏi đáp sau khi kết nối RDS pgvector..                                                                                                                                                                                                  | 24/07/2026       | 24/07/2026         |                                                        |
+| Thứ | Công việc                                                                                                                                                                                                                                                                                                         | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                                      |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------ | ------------------------------------------------------ |
+| 2    | - Thiết lập kết nối giữa ứng dụng và PostgreSQL trên Amazon RDS.<br />- Cấu hình các biến môi trường kết nối RDS.<br />- Kiểm tra kết nối PostgreSQL từ ứng dụng.                                                                                                                        | 20/07/2026       | 20/07/2026         |                                                        |
+| 3    | - Điều chỉnh lớp quản lý vector để có thể sử dụng nhiều phương án lưu trữ: FAISS/SQLite cho local và pgvector cho môi trường cloud.<br />- Tạo bảng legal_chunks và cột embedding dạng vector trong PostgreSQL.<br />- Kiểm tra quá trình insert chunk và embedding vào database. | 21/07/2026       | 21/07/2026         |                                                        |
+| 4    | - Khảo sát cách thực hiện tìm kiếm theo độ tương đồng cosine với pgvector.<br />- Tối ưu truy vấn RDS.<br />- Bổ sung timeout cho truy vấn PostgreSQL.                                                                                                                                         | 22/07/2026       | 22/07/2026         | [aws.amazon.com/vi/rds](https://aws.amazon.com/vi/rds/) |
+| 5    | - Tìm hiểu và thử nghiệm index HNSW/IVFFlat cho pgvector.<br />- Viết script create_hnsw_index.py và create_ivfflat_index.py.<br />- Bổ sung benchmark và đo latency cho retrieval, embedding, DB search và LLM.                                                                                      | 23/07/2026       | 23/07/2026         |                                                        |
+| 6    | - Kiểm thử lại pipeline hỏi đáp sau khi kết nối RDS pgvector.                                                                                                                                                                                                                                              | 24/07/2026       | 24/07/2026         |                                                        |
 
 ### Kết quả đạt được tuần 5:
 
-- Ứng dụng hỗ trợ lưu và tìm kiếm vector bằng PostgreSQL pgvector.
+- Hoàn thành việc kết nối hệ thống với PostgreSQL pgvector trên Amazon RDS.
 - Cấu hình RDS được đưa vào hệ thống qua biến môi trường.

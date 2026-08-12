@@ -7,24 +7,23 @@ pre: " <b> 1.1. </b> "
 ---
 ### Mục tiêu tuần 1:
 
-- Làm quen với môi trường thực tập, nắm yêu cầu dự án Law-Chatbot
-- Cài đặt môi trường phát triển và xây dựng các module nền tảng ban đầu cho hệ thống RAG
+- Nắm bắt cách thức làm việc tại FCJ và làm quen với định hướng của dự án Law-Chatbot.
+- Thiết lập môi trường lập trình, tìm hiểu kiến trúc RAG và chuẩn bị các thành phần cốt lõi cho hệ thống tra cứu pháp luật.
 
 ### Các công việc cần triển khai trong tuần này:
 
-| Thứ | Công việc                                                                                                                                                                                                                                                                                                                                       | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                                    |
-| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------ | ---------------------------------------------------- |
-| 2    | - Làm quen với thành viên nhóm và môi trường thực tập.<br/>- Tìm hiểu định hướng project Law-Chatbot.                                                                                                                                          | 22/06/2026       | 22/06/2026         |                                                      |
-| 3    | - Tìm hiểu hạ tầng toàn cầu AWS (Data Center, AZ, Region, Edge Locations).<br />- Tìm hiểu tổng quan kiến trúc RAG.<br />- Cài đặt môi trường Python, VSCode, Git và các thư viện cần thiết.                                                                                                                                   | 23/06/2026       | 23/06/2026         |                                                      |
-| 4    | - Khởi tạo cấu trúc source code cho dự án.<br />- Phân tích kiến trúc tổng quan hệ thống RAG (Retrieval-Augmented Generation) ứng dụng trong tra cứu văn bản pháp luật.                                                                                                                                             | 24/06/2026       | 24/06/2026         |                                                      |
-| 5    | - Khởi tạo cấu trúc source code cho dự án.<br />- Xây dựng module config.py để đọc cấu hình từ .env.<br />- Xây dựng module dataset_reader.py để đọc dữ liệu pháp luật.                                                                                                  | 25/06/2026       | 25/06/2026         |                                                      |
-| 6    | - Xây dựng module chunking.py để tách văn bản pháp luật thành các đoạn nhỏ.<br />- Xây dựng module embeddings.py để tạo vector embedding.<br />- Xây dựng module vector_store.py để lưu trữ và tìm kiếm vector. | 26/06/2026       | 26/06/2026         | [aws.amazon.com/vi/s3](https://aws.amazon.com/vi/s3/) |
+| Thứ | Công việc                                                                                                                                                                                                                                                 | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                                    |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------ | ---------------------------------------------------- |
+| 2    | - Làm quen với các thành viên trong nhóm và quy trình làm việc.<br />- Trao đổi để xác định mục tiêu, phạm vi và yêu cầu ban đầu của dự án Law-Chatbot.                                                                         | 22/06/2026       | 22/06/2026         |                                                      |
+| 3    | - Khảo sát mô hình hạ tầng AWS<br />- Tìm hiểu nguyên lý hoạt động của RAG.<br />- Chuẩn bị Python, VSCode, Git cùng các dependency phục vụ quá trình phát triển.                                                                   | 23/06/2026       | 23/06/2026         |                                                      |
+| 4    | - Thiết kế cấu trúc thư mục và các thành phần ban đầu của source code.<br />- Phân tích luồng xử lý RAG trong bài toán hỏi đáp và tra cứu văn bản pháp luật.                                                                   | 24/06/2026       | 24/06/2026         |                                                      |
+| 5    | - Hoàn thiện thêm cấu trúc mã nguồn.<br />- Phát triển dataset_reader.py phục vụ việc nạp dữ liệu pháp luật vào pipeline.                                                                                                                 | 25/06/2026       | 25/06/2026         |                                                      |
+| 6    | - Xây dựng module chunking.py để tách văn bản pháp luật thành các đoạn nhỏ.<br />- Xây dựng embeddings.py để chuyển nội dung thành vector biểu diễn.<br />- Xây dựng module vector_store.py để lưu trữ và truy vấn vector. | 26/06/2026       | 26/06/2026         | [aws.amazon.com/vi/s3](https://aws.amazon.com/vi/s3/) |
 
 ### Kết quả đạt được tuần 1:
 
-- Làm quen với môi trường làm việc FCJ và nội quy doanh nghiệp.
-- Tiếp nhận định hướng và yêu cầu đồ án thực tập.
-- Cài đặt được môi trường phát triển và khởi tạo source code ban đầu.
-- Xây dựng được các module nền tảng cho pipeline RAG.
-- Tham gia trao đổi với nhóm để nắm vai trò, phạm vi công việc và cách phối hợp trong dự án.
-- Thống nhất kênh liên lạc, cách quản lý mã nguồn và cách cập nhật tiến độ hằng tuần.
+- Bước đầu thích nghi với môi trường thực tập, cách phối hợp và các quy định làm việc tại FCJ.
+- Hiểu được mục tiêu và phạm vi chính của đồ án Law-Chatbot.
+- Hoàn thiện môi trường phát triển và nền móng source code cho dự án.
+- Có kiến thức ban đầu về AWS và quy trình RAG phục vụ bài toán tra cứu pháp luật.
+- Hoàn thành các thành phần cơ bản gồm đọc cấu hình, nạp dữ liệu, chia nhỏ văn bản, tạo embedding và quản lý vector.

@@ -7,24 +7,23 @@ pre: " <b> 1.1. </b> "
 ---
 ### Week 1 Objectives:
 
-- Get familiar with the internship environment, grasp the requirements of the Law-Chatbot project.
-- Install the development environment and build initial foundational modules for the RAG system.
+- Grasp the working methods at FCJ and get familiar with the orientation of the Law-Chatbot project.
+- Set up the programming environment, learn about RAG architecture, and prepare core components for the legal retrieval system.
 
 ### Tasks to be carried out this week:
 
-| Day | Task | Start Date | Completion Date | Reference Material |
-| --- | --- | ---------- | --------------- | --- |
-| 2   | - Get familiar with team members and the internship environment.<br/>- Learn about the Law-Chatbot project orientation. | 22/06/2026 | 22/06/2026 | |
-| 3   | - Learn about the AWS Global Infrastructure (Data Center, AZ, Region, Edge Locations).<br />- Learn an overview of the RAG architecture.<br />- Install Python, VSCode, Git environment, and necessary libraries. | 23/06/2026 | 23/06/2026 | |
-| 4   | - Initialize the source code structure for the project.<br />- Analyze the overall architecture of the RAG (Retrieval-Augmented Generation) system applied to legal document retrieval. | 24/06/2026 | 24/06/2026 | |
-| 5   | - Initialize the source code structure for the project.<br />- Build module config.py to read configurations from .env.<br />- Build module dataset_reader.py to read legal data. | 25/06/2026 | 25/06/2026 | |
-| 6   | - Build module chunking.py to split legal text into small chunks.<br />- Build module embeddings.py to generate vector embeddings.<br />- Build module vector_store.py to store and search vectors. | 26/06/2026 | 26/06/2026 | [aws.amazon.com/vi/s3](https://aws.amazon.com/vi/s3/) |
+| Day | Task                                                                                                                                                                                                           | Start Date | Completion Date | Reference Material                                   |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------------- | ---------------------------------------------------- |
+| 2   | - Get familiar with team members and the working process.<br />- Discuss to identify the goals, scope, and initial requirements of the Law-Chatbot project.                                                    | 22/06/2026 | 22/06/2026      |                                                      |
+| 3   | - Survey AWS infrastructure models.<br />- Learn the operating principles of RAG.<br />- Prepare Python, VSCode, Git, and necessary dependencies for development.                                              | 23/06/2026 | 23/06/2026      |                                                      |
+| 4   | - Design the folder structure and initial components of the source code.<br />- Analyze the RAG processing flow in the legal Q&A and document retrieval problem.                                               | 24/06/2026 | 24/06/2026      |                                                      |
+| 5   | - Further complete the source code structure.<br />- Develop dataset_reader.py to load legal data into the pipeline.                                                                                           | 25/06/2026 | 25/06/2026      |                                                      |
+| 6   | - Build module chunking.py to split legal text into smaller chunks.<br />- Build embeddings.py to convert content into vector representations.<br />- Build module vector_store.py to store and query vectors. | 26/06/2026 | 26/06/2026      | [aws.amazon.com/vi/s3](https://aws.amazon.com/vi/s3/) |
 
 ### Week 1 Achievements:
 
-- Got familiar with the FCJ working environment and company regulations.
-- Received orientation and requirements for the internship project.
-- Successfully installed the development environment and initialized the initial source code.
-- Built foundational modules for the RAG pipeline.
-- Participated in team discussions to understand roles, scope of work, and coordination within the project.
-- Agreed on communication channels, source code management methods, and weekly progress update methods.
+- Initially adapted to the internship environment, coordination methods, and working regulations at FCJ.
+- Understood the goals and main scope of the Law-Chatbot project.
+- Completed the development environment and foundation source code for the project.
+- Gained initial knowledge of AWS and the RAG process for legal retrieval tasks.
+- Completed basic components including configuration reading, data loading, text chunking, embedding generation, and vector management.

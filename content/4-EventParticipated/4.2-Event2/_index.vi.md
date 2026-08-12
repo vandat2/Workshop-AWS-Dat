@@ -1,5 +1,5 @@
 ---
-title: "Event 1"
+title: "Event 2"
 date: 2024-01-01
 weight: 1
 chapter: false
@@ -44,7 +44,6 @@ Xuyên suốt các bài thuyết trình, các đội đã chỉ ra nhiều đi�
 #### Tư duy thiết kế và quản trị dự án
 
 Qua quá trình bảo vệ của các đội, có thể thấy rằng việc xuất phát từ một vấn đề cụ thể của người dùng sẽ giúp định hướng phát triển rõ ràng hơn là bắt đầu từ một công nghệ mới rồi mới tìm kiếm ứng dụng, quan sát và thấu hiểu khách hàng mục tiêu trước khi bắt tay vào viết code.
-
 
 #### Kiến trúc kỹ thuật
 
