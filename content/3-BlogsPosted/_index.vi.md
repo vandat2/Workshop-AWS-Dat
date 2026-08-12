@@ -5,14 +5,14 @@ weight: 3
 chapter: false
 pre: " <b> 3. </b> "
 ---
-### [Blog 1 - TỐI ƯU HÓA AI DOANH NGHIỆP TRÊN AWS: BƯỚC TIẾN VƯỢT BẬC TỪ RAG ĐẾN TASK-AWARE KNOWLEDGE COMPRESSION](3.1-Blog1/)
+### [Blog 1 - Amazon đã xây dựng hệ thống giám sát toàn diện cho hơn 400 văn phòng bằng Amazon OpenSearch Serverless như thế nào?](3.1-Blog1/)
 
-Blog này giới thiệu giải pháp Task-Aware Knowledge Compression (TAKC) giúp vượt qua rào cản của mô hình RAG truyền thống khi xử lý các tác vụ phân tích phức tạp trên tập tài liệu lớn. Bằng cách sử dụng LLM để nén dữ liệu theo từng mục đích công việc cụ thể và triển khai trên hạ tầng AWS (bao gồm Amazon Bedrock và OpenSearch Service), TAKC giúp giảm từ 8x đến 64x số lượng token, vừa bảo toàn ngữ cảnh toàn cục vừa tối ưu hóa chi phí vận hành cho AI doanh nghiệp.
+Blog này chia sẻ cách đội ngũ Corporate Infrastructure Services (CIS) của Amazon xây dựng nền tảng Full Stack Observability (FSO) tập trung trên Amazon OpenSearch Serverless. Giải pháp giúp tự động hóa quá trình thu thập, xử lý và trực quan hóa hàng triệu logs, metrics và events mỗi ngày từ hơn 400 văn phòng toàn cầu qua đó rút ngắn 83% thời gian phát hiện sự cố (MTTD) và tiết kiệm hàng nghìn giờ làm việc của kỹ sư mỗi năm.
 
-### [Blog 2 - PHÁT HIỆN VÀ XỬ LÝ LỖI NGẦM TRONG AI AGENTS VỚI AMAZON BEDROCK AGENTCORE OPTIMIZATION](3.2-Blog2/)
+### [Blog 2 - Agentic AI đang thay đổi cách quản lý hạ tầng game như thế nào?](3.2-Blog2/)
 
-Blog này giới thiệu giải pháp Amazon Bedrock AgentCore Optimization giúp doanh nghiệp phát hiện và xử lý triệt để các "lỗi ngầm" (silent failures) trong hệ thống AI Agent—những lỗi không phát ra cảnh báo hạ tầng nhưng làm sai lệch nghiệp vụ. Bằng cách tự động gom nhóm dữ liệu trace theo nguyên nhân gốc và xếp hạng theo tỷ lệ ảnh hưởng, giải pháp này chuyển dịch mô hình giám sát từ bị động sang chủ động. Qua đó, doanh nghiệp nhanh chóng khoanh vùng sự cố, nâng cao độ tin cậy cho AI Agent và tối ưu hóa năng suất đội ngũ phát triển.
+Blog này giới thiệu giải pháp ứng dụng Agentic AI (Multi-Agent System) dựng trên Amazon Bedrock AgentCore để giải quyết bài toán quản lý hạ tầng game phức tạp của đội ngũ GameOps. Sử dụng các AI Agent chuyên biệt tương tác qua ngôn ngữ tự nhiên và MCP servers, giải pháp giúp tự động hóa việc giám sát máy chủ GameLift vận hành cụm EKS và tối ưu hóa chi tiêu AWS một cách trực quan, nhanh chóng và bảo mật.
 
-### [Blog 3 - PHÁT HIỆN VÀ NGĂN CHẶN GIAN LẬN TÀI LIỆU TRONG VÀI GIÂY VỚI INSCRIBE VÀ AMAZON BEDROCK](3.3-Blog3/)
+### [Blog 3 - PDI Technologies cắt giảm 300 giờ báo cáo thủ công mỗi năm nhờ Amazon QuickSight](3.3-Blog3/)
 
-Blog này giới thiệu giải pháp ứng dụng Amazon Bedrock của Inscribe giúp phát hiện gian lận tài liệu tài chính chỉ trong vài giây—nơi các công cụ OCR truyền thống thất bại trước sự tinh vi của Generative AI và các sai lệch về mặt logic toán học. Bằng cách kết hợp phân tích siêu dữ liệu tệp tin với khả năng suy luận ngữ cảnh sâu của LLM trên hạ tầng AWS, hệ thống tự động kiểm tra tính toàn vẹn của dữ liệu và đưa ra cảnh báo rủi ro tức thì. Qua đó, các tổ chức tài chính có thể cắt giảm 80% thời gian thẩm định thủ công, nâng cao độ chính xác và tối ưu hóa chi phí vận hành.
+Blog này giới thiệu cách PDI Technologies hiện đại hóa hạ tầng Business Intelligence (BI) để giải quyết tình trạng phân tán dữ liệu sau hơn 30 thương vụ mua lại. Bằng cách tích hợp Amazon QuickSight vào hệ sinh thái dữ liệu AWS (S3, Redshift, Glue, Lambda) PDI đã hợp nhất dữ liệu thành công, mang lại khả năng phân tích nhúng tiện lợi cho khách hàng, giúp tiết kiệm hơn 300 giờ báo cáo thủ công mỗi năm và đạt tỷ suất hoàn vốn (ROI) lên đến 1600% trong lĩnh vực tài chính.

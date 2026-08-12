@@ -5,14 +5,14 @@ weight: 3
 chapter: false
 pre: " <b> 3. </b> "
 ---
-### [Blog 1 - OPTIMIZING ENTERPRISE AI ON AWS: A MAJOR LEAP FROM RAG TO TASK-AWARE KNOWLEDGE COMPRESSION](3.1-Blog1/)
+### [Blog 1 - How Amazon achieved full-stack observability across 400+ offices with Amazon OpenSearch Serverless](3.1-Blog1/)
 
-This blog introduces Task-Aware Knowledge Compression (TAKC), a solution that overcomes traditional RAG limitations when handling complex analytical tasks across large document sets. By leveraging LLMs to compress data tailored to specific task requirements on AWS infrastructure (including Amazon Bedrock and OpenSearch Service), TAKC reduces token volume by 8x to 64x while preserving global context and significantly optimizing operational costs for enterprise AI.
+This blog shares how Amazon's Corporate Infrastructure Services (CIS) team built a centralized Full-Stack Observability (FSO) platform on Amazon OpenSearch Serverless. The solution automates the collection, processing, and visualization of millions of logs, metrics, and events daily from over 400 offices globally, reducing Mean Time to Detect (MTTD) by 83% and saving thousands of engineering hours annually.
 
-### [Blog 2 - DETECTING AND RESOLVING SILENT FAILURES IN AI AGENTS WITH AMAZON BEDROCK AGENTCORE OPTIMIZATION](3.2-Blog2/)
+### [Blog 2 - How Agentic AI is transforming game infrastructure management](3.2-Blog2/)
 
-This blog introduces Amazon Bedrock AgentCore Optimization, a solution designed to detect and resolve "silent failures" in enterprise AI Agent systems—errors that bypass traditional infrastructure monitoring while causing business logic failures. By automatically clustering trace data by root cause and ranking them by impact scale, it shifts observability from reactive to proactive. Consequently, enterprises can rapidly isolate incidents, enhance AI Agent reliability, and optimize engineering team productivity.
+This blog introduces a reference solution leveraging Agentic AI (a Multi-Agent System) built on Amazon Bedrock AgentCore to address complex game infrastructure management challenges for GameOps teams. By utilizing specialized AI agents interacting via natural language and MCP servers, the solution automates GameLift server fleet monitoring, Amazon EKS cluster operations, and AWS cost optimization in a visual, rapid, and secure manner.
 
-### [Blog 3 - DETECTING AND PREVENTING DOCUMENT FRAUD IN SECONDS WITH INSCRIBE AND AMAZON BEDROCK](3.3-Blog3/)
+### [Blog 3 - How PDI Technologies cut 300 hours of manual reporting with Amazon QuickSight](3.3-Blog3/)
 
-This blog highlights Inscribe's integration of Amazon Bedrock to detect financial document fraud in seconds, overcoming the limitations of traditional OCR tools against Generative AI and logical discrepancies. By combining file metadata analysis with deep LLM contextual reasoning on AWS infrastructure, the system automatically verifies data integrity and provides instant risk insights. Consequently, financial institutions can cut manual review time by 80%, improve detection accuracy, and optimize operational costs.
+This blog showcases how PDI Technologies modernized its Business Intelligence (BI) infrastructure to resolve data fragmentation resulting from over 30 mergers and acquisitions. By integrating Amazon QuickSight into the AWS data ecosystem (S3, Redshift, Glue, Lambda), PDI successfully consolidated its data, delivered convenient embedded analytics for customers, saved over 300 hours of manual reporting annually, and achieved a 1,600% ROI in finance.

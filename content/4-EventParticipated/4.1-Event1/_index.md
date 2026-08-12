@@ -5,70 +5,66 @@ weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
-# Summary Report: “FCAJ - Agentic AI Build Week”
+# Reflection Report: “FCAJ Community Day - June 2026”
 
 ### Event Objectives
 
-* Summarize and create a space to share experiences from the hands-on Hackathon competition, where builders collaborated to construct Agentic AI products.
-* Drive the adoption of cloud technologies to modernize architecture, focusing on solving real-world enterprise "pain points".
-* Encourage teamwork and inspire technology product development through pitching sessions from competing teams.
+* Provide practical perspectives and share experiences from industry experts on trends in Cloud Infrastructure and Artificial Intelligence (AI).
+* Discuss the position and future of Cloud Engineers, DevOps, and Solution Architects in the face of the rise of AI coding tools.
+* Analyze core enterprise challenges when migrating infrastructure to the Cloud: Cost management (FinOps), Security (Penetration Testing), and optimizing operations for complex systems.
+* Introduce and provide practical answers on implementing AI/MCP Server solutions, Amazon Q/Bedrock, and estimating operational costs for private network infrastructure on AWS.
 
 ### Speakers
 
-* **Joseph Marazota** - Head of Technology of ASEAN.
-* **Nguyễn Gia Hưng** - Head of Solution Architect of Vietnam.
-* Along with the presence of representatives from JIC Fund, AWS experts, and competing teams.
+* **Cloud & AI Expert / Speaker** - Representative from enterprise/AWS Community, presenting on Cloud career paths, complexity risk management, and AI applications in FinOps & Security.
+* **Toàn** - Speaker providing in-depth insights on Amazon Q solutions, MCP Server, and cost estimation for AWS infrastructure.
 
-### Key Highlights
+### Key Highlights (Core Theory)
 
-#### Traditional Operational Pain Points Addressed
+#### Impact of AI on the Career Roadmap of Cloud & DevOps Engineers
 
-Throughout the presentations, the competing teams analyzed and pointed out several severe bottlenecks in current operational systems across multiple fields:
+* **Shift in hiring demand:** AI tools enable extremely fast code deployment, making enterprises prioritize talent skilled at working effectively with AI. However, AI cannot completely replace humans in core roles such as Solution Architect, DevOps, or Cloud Engineer.
+* **The Complexity Management Problem:** Large enterprises have highly complex infrastructure environments (encompassing Source Code, Infrastructure, and Business Logic). When incidents occur, skilled engineers are still needed to make fast and accurate decisions.
+* **AI applications in FinOps & Security:**
+  * *FinOps:* AI has the ability to understand both AWS infrastructure and financials, thereby supporting cost optimization better than purely financial personnel.
+  * *Security:* Develop AI tools capable of automated Penetration Testing, assessing Infrastructure-as-Code (IaC) risks, and monitoring Security Logs across the entire system.
 
-* **Disrupted User Experience (Team One Team):** Forcing customers to download a new app, create an account, and exit their familiar chat interface to place an order creates significant friction, causing businesses to easily lose customers.
-* **Fragmented Strategic Data (Team Signal Scout):** Business signals and competitor strategic data are often scattered across various reports. Analysts face difficulties synthesizing data to project return on investment (ROI) when transforming business models.
-* **Cloud Architecture Design Overload (Team BL):** Manually creating architecture diagrams, estimating costs, and writing Infrastructure as Code (IaC) is time-consuming and error-prone when handling urgent customer requests.
-* **Public Space Congestion (Team 3K):** Overcrowding at security gates and supermarkets poses persistent management challenges. Traffic flows lack real-time monitoring, resulting in delayed staff dispatching.
-* **Anti-Money Laundering (AML) Alert Overload (Team Six Pillar):** Traditional transaction monitoring systems generate false positive rates of up to 90-95%. Manual reviews cost $20-25 USD and take up to 3 hours per case, wasting financial resources and causing analyst burnout.
+#### Private Network Analysis & AWS Cost Estimation
 
-#### Outstanding Technological Solutions from Competing Teams
+* **Private Setup:** Deploying an MCP Server or integrating a private chatbot within an enterprise requires combining multiple services such as EC2, Application Load Balancer (ALB), Route 53 Resolver, and AWS Secrets Manager.
+* **Fixed & variable operational costs:**
+  * Fixed costs for private infrastructure (Route 53 Resolver, ALB, EC2) can range from **$250 - $350/month** (excluding data transfer volume).
+  * Variable costs depend on Data Transfer In/Out and the scale of user queries within the enterprise.
 
-* **AI Conversational Ordering (Team One Team):** Deploying an AI Agent directly integrated into Zalo/WhatsApp platforms for direct ordering, leveraging an Agent Core with memory capabilities to understand user intent and context.
-* **Business Strategy Multi-Agent (Team Signal Scout):** Using information retrieval tools to bypass login walls, synthesizing strategic data, and combining with Amazon Bedrock Agent to analyze risks and forecast success.
-* **SA Professional AI Native App (Team BL):** Building a natural language processing system to automatically generate AWS architecture diagrams alongside cost estimates and IaC code, saving Solution Architects days of work.
-* **Sheper Crowd Monitoring System (Team 3K):** Combining AWS Kinesis Data Streams with Computer Vision models (YOLO) to detect and alert on crowd density in real time across zones.
-* **Adaptive Workflow Engine (Team Six Pillar):** Proposing a Supervisor Agent model that manages Sub-Agents (for KYC, cash flow) to automate cross-reconciliation, significantly reducing false positives requiring manual review in the financial sector.
+---
 
-### Key Learnings
+### Key Learnings & Applications
 
-#### Design Thinking & Project Management
+#### Shift in Software Development Mindset
 
-* **Business-first Mindset:** Through the teams' defense arguments, the biggest takeaway was that no matter how sophisticated or complex the underlying technology is, it matters less than whether the product thoroughly solves market "pain points".
-* **Importance of Project Scoping:** Observing the successes and failures during pitch presentations showed that scoping features just enough to complete a functional MVP for a live proof-of-concept demo is far more vital than stuffing in too many ideas.
+* **Using AI as a powerful assistant:** Instead of worrying about AI replacing jobs, engineers should proactively master AI tools to increase coding speed, deployment efficiency, and automate routine tasks.
+* **Cloud Cost Management (FinOps) mindset:** Every cloud architecture design is tied to costs. Estimating operational costs (fixed and variable) is a mandatory skill when consulting or designing solutions for enterprises.
 
-#### Technical Architecture
+#### Practical Cloud Infrastructure (IaC) Implementation
 
-* **Multi-Agent Optimization:** Learned how to divide specialized agents and implement cross-checking mechanisms combined with Guardrails to minimize AI hallucinations in enterprise environments.
-* **Practicality of Cloud Computing:** Gained a clearer understanding of how teams flexibly integrated AWS services such as Lambda, Kinesis, DynamoDB, and Amazon Bedrock to ensure seamless architecture performance at an effective cost.
+* The choice between Public and Private solutions always involves trade-offs between security and operational costs. Understanding how Endpoints, Route 53 Resolver, and VPC work helps optimize data flow while keeping costs reasonable.
+
+---
 
 ### Application to Work & Study
 
-* **AI System Development and Optimization:** Applying the Multi-Agent design mindset and cross-checking techniques shared at the event to refine ongoing RAG system projects built with the LangChain framework, improving retrieval and synthesis accuracy.
-* **Upgrading Backend Architecture:** Applying lessons on cloud-based event-driven architecture to enhance backend API designs using frameworks like FastAPI or Django, optimizing asynchronous task processing and database communication.
-* **Extracting Practical Strategies:** Learning project scoping and pitching skills from the competing teams to better prepare for practical phases in the AWS FCAJ program, as well as optimizing product development roadmaps for upcoming innovation competitions.
+* **Optimize security architecture for projects:** Apply secure credential storage using AWS Secrets Manager and set up internal query flows through Private Endpoints to protect sensitive data.
+* **Plan Cloud budgets systematically:** When building Demo/Workshop systems or real projects, always create detailed cost estimation tables for each component (EC2, ALB, DNS Resolver, Data Transfer) before deployment.
+* **Enhance troubleshooting skills:** Focus on deeply mastering core concepts of Networking, Systems, and Security to be able to quickly handle complex incidents that AI cannot yet fully replace.
+
+---
 
 ### Personal Experience and Takeaways from the Event
 
-Even though I attended the event as an audience member listening in, following the teams' presentations provided me with deep and authentic takeaways:
-
-* **Deeper Understanding of Real-World Pressure:** Through the teams' stories of teamwork, pulling all-nighters to resolve code conflicts, or fixing mispushed configuration files, I gained a vivid picture of the pressure, risk management, and crisis resolution in time-constrained tech projects.
-* **Shift in Product Development Mindset:** Observing the sharp Q&A sessions between the judges and contestants, I realized that deep technical programming skills must always go hand in hand with a business mindset and a thorough understanding of the end user. Failing to answer the question "Who will use this product?" renders all technical efforts meaningless.
-* **Inspiration from the Builder Community:** The vibrant atmosphere of the event and the passionate sharing from AWS Solution Architects gave me immense motivation. It drives me to continuously learn and step out of my comfort zone to officially sign up as a competitor in the near future.
+* **Community connection:** The event created a direct networking environment between students, young engineers, and seasoned experts from various technology enterprises.
+* **Real-world enterprise lessons:** The shared challenges were not just theoretical but revolved around practical constraints such as budgets, internal data security, and handling incidents in production environments.
+* **Clear career orientation:** Helped reinforce my confidence in the Cloud/DevOps engineer career path, while identifying essential supplementary skills (FinOps, Security, AI Tooling) to increase competitive advantage.
 
 #### Some event photos
 
-![1786293601147](image/_index/1786293601147.jpg)
-
-![1786293622676](image/_index/1786293622676.jpg)
-
-![1786293652384](image/_index/1786293652384.jpg)
+![1786503478052](image/_index.vi/1786503478052.jpg)

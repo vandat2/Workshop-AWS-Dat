@@ -5,69 +5,90 @@ weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
 ---
-# OPTIMIZING ENTERPRISE AI ON AWS: A MAJOR LEAP FROM RAG TO TASK-AWARE KNOWLEDGE COMPRESSION
+# How Amazon achieved full-stack observability across 400+ offices with Amazon OpenSearch Serverless
 
-Retrieval-Augmented Generation (RAG) has become a popular standard that helps enterprise AI systems retrieve knowledge and mitigate hallucinations. However, when applied to complex analytical tasks spanning hundreds of documents—such as corporate financial due diligence or regulatory compliance reviews—RAG begins to reveal its inherent limitations. Similarity search only extracts fragmented text segments, losing the continuous connectivity across documents.
+Amazon currently operates more than 400 offices in over 50 countries, serving approximately 330,000 employees. Every day, millions of logs, metrics, and events are generated from various systems such as internal networks, Wi-Fi, Zoom, Microsoft Teams, Slack, conference room systems, and enterprise applications.
 
-To completely address this barrier, the **Task-Aware Knowledge Compression** (TAKC) solution was introduced. This technique allows compressing the entire knowledge base into task-specific representations, helping optimize context window capacity, significantly reduce token costs, and enhance accuracy for enterprise AI on AWS infrastructure.
+In this post, AWS shares how the Corporate Infrastructure Services (CIS) team built a **Full-Stack Observability** (FSO) platform based on **Amazon OpenSearch Serverless**, centralizing monitoring data into a single pane of glass, thereby reducing detection and troubleshooting times.
 
-This article will analyze why traditional RAG encounters limits, the operational mechanism of TAKC, and how to deploy this architecture on AWS.
+---
 
-## The Challenge: Why does traditional RAG fail in complex synthesis tasks?
+## What is Full-Stack Observability (FSO)?
 
-Consider a scenario where a private equity firm needs to evaluate an M&A deal worth hundreds of millions of dollars. The analytics team must process 5 years of financial statements across 12 subsidiaries, over 200 supplier contracts, environmental compliance reports, and dozens of legal cases. When a user asks a highly synthesized question: " *What are the consolidated financial risks given current supplier terms and pending litigation?* ", traditional RAG can hardly provide a comprehensive answer.
+To address this challenge, Amazon Corporate Infrastructure Services (CIS) built a centralized FSO platform on Amazon OpenSearch Serverless, integrating with both external and internal systems such as Cisco ThousandEyes, Zoom, and change management systems.
 
-The main reasons lie in how RAG operates:
+The platform is built on **six core design principles**:
 
-1. **Global Context Loss:** RAG only retrieves the top-k text chunks with the highest lexical similarity. Hidden logical connections residing across multiple documents that do not share lexical similarity are overlooked.
-2. **Context Window Overflow:** Feeding hundreds of pages of original documents into the prompt causes LLM API invocation costs to skyrocket, while simultaneously reducing the model's attention capacity.
-3. **Ineffective Generic Summarization:** Traditional summarization methods attempt to retain everything, leading to a dilution of the information density required for a specific perspective.
+- **Secure by Design:** Prioritizes protection for Amazon's infrastructure, users, and data.
+- **AWS First:** Maximizes the use of AWS Managed Services whenever possible.
+- **Buy, Borrow, then Build:** Leverages existing solutions to shorten time-to-market.
+- **Simplicity:** Minimizes the number of unnecessary system components and dependencies.
+- **Frugality:** Maximizes business value delivered while minimizing technology costs and complexity.
+- **Open Standards:** Prioritizes open standards and open-source components to ensure long-term flexibility.
 
-## What is the Task-Aware Knowledge Compression (TAKC) solution?
+---
 
-Unlike passive summarization, TAKC uses an LLM to compress documents through the "lens" of a specific task (Task-Specific Lens). For the same annual report document, if compressed for a **Financial Analysis** task, the system will retain revenue, profit margins, and cash flow; but if compressed for a **Legal Review** task, the system will prioritize extracting regulatory citations and violation histories.
+## FSO Platform Architecture
 
-## Core features of TAKC:
+![1786506082326](image/_index/1786506082326.jpg)
 
-* **Task-Aware Compression:** Eliminates irrelevant noise, reducing token count by 8x to 64x while preserving the most critical data.
-* **Offline Processing Prior to Querying:** Data is pre-compressed according to task types prior to storage, making response speeds extremely fast when users ask questions.
-* **Multi-rate Compression:** Allows data compression at different levels of detail (from high-level summaries to deep compression), flexibly routing based on query complexity.
+This FSO platform consists of **three main architectural layers**:
 
-## Overview of the TAKC pipeline architecture on AWS
+### 1. Integrations Layer (Data Sources)
 
-The TAKC solution is fully deployed on AWS cloud infrastructure, combining leading services such as Amazon Bedrock and Amazon SageMaker to create a powerful automated workflow:
+Data from diverse sources is ingested into the platform via multiple protocols, including webhooks, event streaming, and CloudWatch logs.
 
-1. **Ingestion Pipeline**
+### 2. Platform Layer (Processing & Storage)
 
-* **Raw Document Storage:** Raw data (PDF, DOCX, 10-K filings) is uploaded to Amazon S3.
-* **Compression Prompt Definition:** Task-specific compression prompts are centrally managed and version-controlled in **AWS Systems Manager Parameter Store** or a dedicated **S3** bucket.
-* **Compression Execution via LLM:** The system uses high-performance foundation models on **Amazon Bedrock** (such as Anthropic Claude) or custom models on **Amazon SageMaker** to perform task-specific document compression.
-* **Compressed Knowledge Storage:** The resulting compressed representations are saved to a vector/text database (such as  **Amazon OpenSearch Service** ) ready for the query phase.
+The entire process of normalization, transformation, enrichment, and routing of data is handled by **Amazon OpenSearch Ingestion (OSIS)**—a fully managed pipeline without server management or scaling logic. The data is then stored and analyzed in **Amazon OpenSearch Serverless**, featuring:
 
-2. **Query Pipeline**
+- Automatic scaling based on workload
+- Multi-AZ replication
+- Automatic backups to S3
+- Tiered storage (hot/warm/cold)
+- Index lifecycle management
 
-* **Complexity Analyzer:** When a user submits a question, the system automatically determines the task type and required level of detail.
-* **Compressed Knowledge Retrieval:** Instead of retrieving individual small text chunks, the system fetches the entire compressed knowledge representation corresponding to that task.
-* **Inference:** The LLM on Amazon Bedrock receives the condensed knowledge representation and generates an accurate, logical answer with optimal token costs.
+The system also includes a failure-handling mechanism via a **Dead Letter Queue (SQS)** to capture and retry failed messages.
 
-![1786352411279](image/_index/1786352411279.png)
+### 3. Consumption Layer (Analytics & Alerting)
 
-## Deployment and Operational Features
+- **FSO Dashboards** provide rich visualizations.
+- Users authenticate via **SAML** and can immediately access pre-built dashboards to monitor network health, application performance, and service availability across all monitored branch locations.
+- The built-in alerting tool on OpenSearch Dashboards automatically monitors configured thresholds and triggers notifications when anomalies occur.
 
-* **Operational Cost Optimization:** Compression significantly reduces prompt size (8x–64x), helping enterprises cut a major portion of LLM API costs during frequent queries.
-* **High Governance and Auditability:** By storing compression prompts as versioned configurations in AWS Systems Manager, enterprises can easily audit, adjust compression standards, and trigger automated re-compression workflows when regulations change.
-* **Flexible Scalability:** The serverless architecture combining S3, Bedrock, and OpenSearch Service enables the system to smoothly process anywhere from hundreds to millions of document pages without managing complex GPU infrastructure.
+### Platform Highlights
 
-## Measurable Results
+Instead of managing infrastructure, the FSO team focuses on creating **reusable ingestion templates**. This approach enabled them to scale from 3 pilot offices to 24 offices in phase 1, with a clear roadmap to 400 offices globally.
 
-Applying TAKC brings dramatic improvements over traditional RAG models:
+---
 
-* **Significant Increase in Information Density:** Fully preserves the overall picture and relationships between documents.
-* **Token Cost Savings:** Cuts input token counts by 8 to 64 times during inference.
-* **Improved Accuracy:** Minimizes hallucinations and data omission caused by context window overflow.
+## Business Outcomes
 
-## Conclusion
+Following deployment, the FSO platform delivered impressive results:
 
-Task-Aware Knowledge Compression (TAKC) marks an important milestone moving far beyond the limits of traditional RAG. By flexibly combining Amazon Bedrock, SageMaker, and AWS storage services, enterprises can build AI solutions capable of deep contextual "understanding" across large-scale data, ensuring performance while optimizing costs.
+- **Thousands of engineering hours saved** annually through automated monitoring and data correlation.
+- **MTTD (Mean Time to Detect) target of 5 minutes** to detect incidents before they impact users.
+- **Continuous visibility of 99.9%** ensuring constant observability of critical infrastructure.
+- **Over 500+ active users** utilizing the platform to accelerate data queries.
+- **83% reduction in MTTD** during the pilot phase.
+- **Expected ROI of 220%** per year, driven solely by engineer time savings.
 
-**Original article link:** [https://aws.amazon.com/vi/blogs/machine-learning/beyond-rag-task-aware-knowledge-compression-for-enterprise-ai-on-aws/](https://aws.amazon.com/vi/blogs/machine-learning/beyond-rag-task-aware-knowledge-compression-for-enterprise-ai-on-aws/)
+---
+
+## Key Lessons Learned from Deployment
+
+Through the process of building and scaling, the Amazon CIS team gathered **7 valuable lessons**:
+
+1. **Start with Clear Business Outcomes:**Don't build observability just because it is "cool." Measure technical metrics (MTTD, MTTR, etc.) to build a convincing business case for leadership.
+2. **Embrace Open Standards:**OpenTelemetry was chosen as the standard from day one. While the first integration took a few weeks, the tenth integration took only a few hours.
+3. **Design for Scale from Day One:**Utilize managed services capable of auto-scaling and build automation from the ground up (Infrastructure as Code, CI/CD).
+4. **Start Small, Think Big:**Pilot the solution at representative branch locations to prove the model's effectiveness, then expand incrementally based on real-world feedback.
+5. **Invest in Data Quality:**Normalize data at ingestion time, add business context (branch, region, service owner), and clean up data to avoid the risk of "garbage in, garbage out."
+6. **Balance Alerting and Noise:**Set alert thresholds conservatively, fine-tune them based on actual feedback, and aim for zero false positives.
+7. **Enable Self-Service:**
+   Provide direct Dashboard access to operations teams, offer detailed documentation and guides, and pre-build query templates so teams can answer their own questions instead of relying on a centralized "observability team."
+
+---
+
+**Reference post from the official AWS blog:**
+[https://aws.amazon.com/blogs/mt/how-amazon-achieved-full-stack-observability-across-400-offices-with-amazon-opensearch-serverless/](https://aws.amazon.com/blogs/mt/how-amazon-achieved-full-stack-observability-across-400-offices-with-amazon-opensearch-serverless/)

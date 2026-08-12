@@ -5,61 +5,88 @@ weight: 1
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
-# PHÁT HIỆN VÀ NGĂN CHẶN GIAN LẬN TÀI LIỆU TRONG VÀI GIÂY VỚI INSCRIBE VÀ AMAZON BEDROCK
+# PDI Technologies cắt giảm 300 giờ báo cáo thủ công mỗi năm nhờ Amazon QuickSight
 
-Trong ngành tài chính và fintech, việc xác minh tính chân thực của các tài liệu như sao kê ngân hàng, bảng lương, tờ khai thuế hay giấy tờ tùy thân là bước then chốt trong quy trình thẩm định tín dụng và quản lý rủi ro. Tuy nhiên, sự phát triển bùng nổ của các công cụ chỉnh sửa kỹ thuật số và Generative AI đã khiến thủ đoạn gian lận tài liệu trở nên vô cùng tinh vi. Kẻ gian có thể dễ dàng sửa đổi con số, tên tuổi, số dư tài khoản hay lịch sử giao tiếp mà không để lại vết phỏng hay lỗi định dạng rõ ràng.
+PDI Technologies là một tập đoàn công nghệ 40 năm tuổi, phục vụ hơn 200.000 khách hàng tại 60 quốc gia trong lĩnh vực bán lẻ tiện lợi và bán buôn xăng dầu đã áp dụng **Amazon QuickSight** để hiện đại hóa hạ tầng Business Intelligence (BI) giúp giảm hơn **300 giờ báo cáo thủ công mỗi năm**, đồng thời xây dựng nền tảng phân tích dữ liệu thống nhất cho toàn doanh nghiệp.
 
-Để giải quyết thách thức này, Inscribe—nền tảng phát hiện gian lận tài liệu hàng đầu—đã hợp tác với AWS để tích hợp **Amazon Bedrock** vào hệ thống phân tích của mình. Sự kết hợp này cho phép xử lý và kiểm tra hàng triệu tài liệu tài chính phức tạp chỉ trong vài giây, giúp các tổ chức tài chính ngăn chặn rủi ro gian lận ngay từ khâu tiếp nhận.
+---
 
-Bài viết này sẽ phân tích lý do tại sao các phương pháp kiểm tra tài liệu truyền thống không còn hiệu quả, cách Inscribe ứng dụng Amazon Bedrock để phân tích ngữ cảnh tài liệu và cấu trúc kiến trúc triển khai giải pháp trên AWS.
+## Thách thức
 
-## Thách thức: Tại sao các công cụ kiểm tra tài liệu truyền thống thất bại trước gian lận hiện đại?
+Trong quá trình phát triển, PDI Technologies đã thực hiện hơn **30 thương vụ mua lại doanh nghiệp** (Mergers and Acquisitions). Điều này giúp công ty mở rộng nhanh chóng nhưng cũng khiến dữ liệu bị **phân tán trên nhiều hệ thống khác nhau**.
 
-Trước đây, các quy trình kiểm duyệt tài liệu thường phụ thuộc vào công nghệ OCR (Optical Character Recognition) cơ bản kết hợp với quy tắc (rule-based) hoặc kiểm tra thủ công bởi chuyên viên thẩm định. Phương pháp này bộc lộ nhiều hạn chế nghiêm trọng khi đối mặt với các thủ đoạn gian lận thế hệ mới:
+Mỗi phòng ban sử dụng một quy trình riêng để tổng hợp dữ liệu:
 
-1. **Gian lận về mặt logic và số liệu:** Kẻ gian không chỉ chỉnh sửa ảnh mà còn thay đổi các con số tổng, số dư cuối kỳ hoặc danh sách giao dịch. Quy trình OCR truyền thống chỉ đọc được văn bản chứ không kiểm tra được tính logic toán học xuyên suốt giữa các dòng giao dịch.
-2. **Quy trình thẩm định thủ công chậm chạp:** Việc giao cho chuyên viên đọc và đối chiếu từng trang tài liệu tốn từ nhiều giờ đến hàng ngày, tạo ra điểm nghẽn lớn trong trải nghiệm đăng ký dịch vụ của khách hàng.
-3. **Sự biến hóa của tài liệu tổng hợp (Synthetic Documents):** Kẻ tấn công có thể dùng Generative AI để tạo ra các tài liệu hoàn toàn mới với định dạng chuẩn mực, vượt qua các bộ lọc đối soát mẫu (template matching) cố định.
+- Đội ngũ tài chính phải dành khoảng **24 giờ mỗi tháng** để tổng hợp dữ liệu từ hệ thống ERP, chuyển đổi sang định dạng phù hợp rồi mới có thể phân tích.
+- Trong các giai đoạn chốt sổ cuối tháng, quy trình này phải lặp lại nhiều lần, dẫn đến tổng thời gian xử lý lên tới gần **300 giờ mỗi năm**.
 
-## Giải pháp Inscribe kết hợp Amazon Bedrock là gì?
+Không chỉ mất thời gian, việc dữ liệu nằm rải rác ở nhiều nơi còn khiến mỗi bộ phận chỉ nhìn thấy một phần bức tranh tổng thể, gây khó khăn cho việc phối hợp và ra quyết định.
 
-Inscribe tích hợp các mô hình ngôn ngữ lớn (Foundation Models) tiên tiến trên **Amazon Bedrock** (như Anthropic Claude) vào nền tảng kiểm tra rủi ro của mình. Thay vì chỉ quét ký tự bề mặt, hệ thống tận dụng khả năng suy luận ngữ cảnh sâu của LLM để "thấu hiểu" cấu trúc, logic toán học và tính toàn vẹn của dữ liệu tài chính.
+PDI cần một giải pháp có khả năng:
 
-## Các đặc điểm cốt lõi của giải pháp:
+- Xử lý chuyển đổi dữ liệu quy mô lớn từ nhiều kho dữ liệu khác nhau.
+- Cung cấp khả năng phân tích nhúng (embedded analytics) cho các giải pháp phần mềm của họ.
+- Hỗ trợ triển khai BI trên toàn công ty.
+- Cải thiện đáng kể hiệu quả báo cáo bằng cách giảm thiểu các quy trình thủ công.
 
-* **Kiểm tra tính hợp lý toán học và ngữ cảnh (Contextual & Mathematical Verification):** LLM trên Amazon Bedrock tự động tính toán lại các phép cộng, trừ số dư, đối chiếu tỷ lệ thuế, lương thực nhận và phát hiện các điểm mâu thuẫn ẩn trong báo cáo.
-* **Xử lý đa dạng loại tài liệu:** Phân tích linh hoạt trên nhiều biểu mẫu tài chính khác nhau như sao kê ngân hàng (bank statements), bảng lương (paystubs), tờ khai thuế (tax forms) và giấy tờ cá nhân mà không cần cấu hình mẫu cứng cho từng ngân hàng hay tổ chức phát hành.
-* **Giải thích nguyên nhân gian lận bằng ngôn ngữ tự nhiên:** Hệ thống không chỉ trả về điểm số rủi ro mà còn đưa ra lý do chi tiết (ví dụ:  *"Số dư đầu kỳ không khớp với tổng giao dịch trong tháng"* ), giúp chuyên viên ra quyết định nhanh chóng.
-* **Xử lý theo thời gian thực (Real-time Processing):** Rút ngắn thời gian phân tích tài liệu phức tạp từ nhiều giờ xuống chỉ còn vài giây.
+---
 
-## Tổng quan kiến trúc pipeline phân tích gian lận của Inscribe trên AWS
+## Vì sao PDI Technologies lựa chọn Amazon QuickSight?
 
-![1786422614378](image/_index.vi/1786422614378.png)
+Sau khi đánh giá nhiều giải pháp BI khác nhau, PDI Technologies lựa chọn **Amazon QuickSight** vì nền tảng này đáp ứng được ba yêu cầu quan trọng:
 
-Kiến trúc giải pháp được thiết kế theo mô hình hoàn toàn tự động, kết hợp các dịch vụ điện toán đám mây của AWS để đảm bảo hiệu năng và độ tin cậy cao:
+### 1. Khả năng nhúng (Embedded Analytics)
 
-1. **Tiếp nhận tài liệu (Document Ingestion):** Khách hàng tải tài liệu (PDF, hình ảnh) lên hệ thống thông qua API được bảo mật, dữ liệu được lưu trữ an toàn tại  **Amazon S3** .
-2. **Trích xuất và Tiền xử lý (Extraction & Layout Analysis):** Nền tảng Inscribe trích xuất cấu trúc văn bản, vị trí các trường dữ liệu và siêu dữ liệu (metadata) của tệp tin để phát hiện dấu vết chỉnh sửa phần mềm (như Photoshop hay Acrobat).
-3. **Phân tích ngữ cảnh bằng Amazon Bedrock:** Dữ liệu trích xuất cùng với các prompt chuyên biệt được gửi tới các mô hình LLM trên  **Amazon Bedrock** . Mô hình sẽ thực hiện đối soát logic, kiểm tra tính nhất quán của giao dịch và phát hiện các bất thường về mặt nội dung.
-4. **Chấm điểm rủi ro và Xuất kết quả (Risk Scoring & Decisioning):** Hệ thống tổng hợp các tín hiệu gian lận về hạ tầng tệp tin và tín hiệu ngữ cảnh từ Bedrock để đưa ra chỉ số rủi ro cuối cùng, tự động phê duyệt hoặc chuyển sang luồng kiểm tra thủ công.
+QuickSight cho phép nhúng các dashboard trực tiếp vào sản phẩm phần mềm của công ty. Điều này giúp **khách hàng có thể xem báo cáo và phân tích dữ liệu ngay trong ứng dụng đang sử dụng** mà không cần chuyển sang một công cụ khác.
 
-## Đặc điểm triển khai và Vận hành
+### 2. Tích hợp sâu với hệ sinh thái AWS
 
-* **Bảo mật và Tuân thủ dữ liệu nghiêm ngặt:** Sử dụng Amazon Bedrock đảm bảo dữ liệu nhạy cảm của khách hàng tài chính không bị sử dụng để huấn luyện lại các mô hình công cộng, tuân thủ các tiêu chuẩn bảo mật khắt khe như SOC 2 và GDPR.
-* **Khả năng mở rộng Serverless:** Tận dụng hạ tầng quản lý hoàn toàn của AWS giúp Inscribe dễ dàng mở rộng quy mô để xử lý hàng triệu tài liệu trong các đợt cao điểm tín dụng mà không lo tắc nghẽn hệ thống.
-* **Tối ưu hóa chi phí và Năng suất:** Giảm đáng kể khối lượng công việc kiểm tra thủ công cho đội ngũ Risk & Operations, giúp doanh nghiệp cắt giảm chi phí vận hành và tăng tỷ lệ chuyển đổi khách hàng.
+QuickSight tích hợp tốt với hệ sinh thái AWS mà doanh nghiệp đang sử dụng, giúp kết nối trực tiếp với các dịch vụ lưu trữ và xử lý dữ liệu như:
 
-## Kết quả đo lường được
+- Amazon S3
+- Amazon Redshift
+- AWS Glue
+- AWS Lambda
 
-Ứng dụng Amazon Bedrock giúp Inscribe mang lại những kết quả vượt trội cho các khách hàng tổ chức tài chính:
+Nhờ vậy, kiến trúc dữ liệu được **đơn giản hóa** và giảm bớt sự phức tạp trong quá trình vận hành.
 
-* **Tốc độ xử lý siêu nhanh:** Giảm thời gian xác minh tài liệu xuống dưới  **vài giây** , cho phép phê duyệt khoản vay hoặc mở tài khoản tức thì.
-* **Tăng tỷ lệ phát hiện gian lận:** Nhận diện chính xác các trường hợp gian lận tinh vi mà mắt thường và các công cụ OCR truyền thống hoàn toàn bỏ sót.
-* **Tối ưu chi phí vận hành:** Cắt giảm đến **80%** thời gian xem xét thủ công của chuyên viên thẩm định.
+### 3. Khả năng mở rộng và hiệu năng vượt trội
 
-## Kết luận
+Nền tảng này có khả năng mở rộng để phục vụ nhiều phòng ban cùng lúc, đồng thời xử lý hiệu quả khối lượng dữ liệu lớn thông qua công nghệ **SPICE** (Super-fast, Parallel, In-memory Calculation Engine), giúp tăng tốc quá trình phân tích và truy vấn dữ liệu.
 
-Việc Inscribe ứng dụng Amazon Bedrock vào quy trình phát hiện gian lận tài liệu chứng minh sức mạnh thực tế của Generative AI trong việc giải quyết các bài toán rủi ro phức tạp. Bằng cách kết hợp phân tích siêu dữ liệu tệp tin với khả năng suy luận ngữ cảnh của LLM trên hạ tầng an toàn của AWS, giải pháp này giúp các tổ chức tài chính chủ động bảo vệ hệ thống trước các thủ đoạn gian lận ngày càng tinh vi.
+---
 
+## Kiến trúc kỹ thuật
 
-**Link bài viết gốc:** [https://aws.amazon.com/vi/blogs/machine-learning/how-inscribe-uses-amazon-bedrock-to-stop-document-fraud-in-seconds/](https://aws.amazon.com/vi/blogs/machine-learning/how-inscribe-uses-amazon-bedrock-to-stop-document-fraud-in-seconds/)
+Kiến trúc dữ liệu mới của PDI được thiết kế để giải quyết ba thách thức cốt lõi:
+
+1. Hợp nhất dữ liệu từ hơn 30 công ty được mua lại.
+2. Hỗ trợ phân tích thời gian thực ở quy mô lớn.
+3. Phục vụ cả trường hợp sử dụng nội bộ lẫn hướng đến khách hàng.
+
+### Luồng dữ liệu diễn ra như sau:
+
+| Giai đoạn                                                          | Công nghệ sử dụng                                | Mô tả                                                                                                                                                                                                                                                                                                                            |
+| :------------------------------------------------------------------- | :--------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Ingestion (Tiếp nhận)**                                    | AWS Glue, AWS Lambda, Amazon AppFlow                 | Dữ liệu từ các nguồn bên ngoài (tài liệu, file, và cơ sở dữ liệu) được đưa vào AWS. Mục tiêu là**hợp nhất dữ liệu từ hơn 30 công ty** đã mua lại vào một nền tảng duy nhất.                                                                                                            |
+| **Storage (Lưu trữ Governed Data Lake)**                     | Amazon S3, AWS Glue Data Catalog, AWS Lake Formation | Dữ liệu sau khi tiếp nhận được lưu trữ trong**Amazon S3** làm data lake trung tâm. Các crawler của AWS Glue tự động phát hiện và lập danh mục lược đồ dữ liệu. AWS Lake Formation thực thi **kiểm soát truy cập chi tiết** và các chính sách quản trị trên toàn bộ data lake. |
+| **Transformation & Quality (Chuyển đổi và Chất lượng)** | AWS Glue                                             | Dữ liệu thô trong S3 được xử lý qua các tác vụ chuyển đổi,**làm sạch, làm giàu, loại bỏ trùng lặp** và định hình lại dữ liệu thành các định dạng sẵn sàng cho phân tích.                                                                                                               |
+| **Analytics (Phân tích)**                                    | Amazon Redshift                                      | Dữ liệu đã được chuyển đổi được tải vào**Amazon Redshift** để thực hiện phân tích SQL hiệu suất cao, tổng hợp và truy vấn phức tạp trên các tập dữ liệu lớn.                                                                                                                              |
+| **Reporting (Báo cáo)**                                      | Amazon QuickSight                                    | **Amazon QuickSight** kết nối với Amazon Redshift để cung cấp bảng điều khiển, trực quan hóa và BI tự phục vụ cho người dùng nghiệp vụ.                                                                                                                                                                 |
+
+## Kết quả và Lợi ích
+
+Việc triển khai mang lại những kết quả vượt ngoài mong đợi:
+
+-**Giảm thời gian báo cáo từ hơn 10 giờ xuống còn vài phút** – đây là lợi ích hiệu quả duy nhất lớn nhất trong toàn tổ chức. Sự giảm thiểu này cũng làm giảm rủi ro sai sót do con người và cải thiện độ chính xác của dữ liệu.
+
+-**Đạt ROI 1600%** trong lĩnh vực tài chính bằng cách thay thế mô hình hóa thủ công bằng QuickSight Scenarios. Trước đây, nhóm tài chính dành hàng giờ để xây dựng thủ công các mô hình và cấu hình. Giờ đây, họ có thể hỗ trợ các yêu cầu phân tích chuyên sâu trong thời gian giảm đáng kể, tiết kiệm ước tính **22 giờ mỗi tháng** cho mỗi chuyên viên phân tích.
+
+-**Mở rộng BI từ 1 nhóm lên 7 lĩnh vực chức năng:** bao gồm bán hàng, nhân sự, tài chính, tiếp thị, vận hành doanh thu, thành công của khách hàng và lãnh đạo điều hành.
+
+-**Đạt 83% tăng hiệu quả** khi chuyển đổi quy trình báo cáo vận hành thủ công cho bộ phận bán hàng sang các báo cáo bảng điều khiển của QuickSight.
+
+---
+
+**Bài viết tham khảo từ blog chính thức của AWS:**
+[https://aws.amazon.com/vi/blogs/business-intelligence/how-pdi-technologies-cut-300-hours-of-manual-reporting-with-amazon-quick/](https://aws.amazon.com/vi/blogs/business-intelligence/how-pdi-technologies-cut-300-hours-of-manual-reporting-with-amazon-quick/)

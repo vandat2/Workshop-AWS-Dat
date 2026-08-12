@@ -5,7 +5,7 @@ weight: 2
 chapter: false
 pre: " <b> 5.2. </b> "
 ---
-# Prerequisites — Preparation Steps
+# Prerequisites - Preparation Steps
 
 ## 5.2.1. Prepare source code
 
@@ -29,15 +29,6 @@ pip install -r requirements.txt
 ```
 
 Make sure you fill in all variables in `.env` before running the main modules.
-
-```bash
-git clone https://github.com/KhanhKoy/vietnamese-legal-llmops
-cd vietnamese-legal-llmops
-cp .env.sample .env
-python -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-```
 
 **Files to read before running the repository:**
 

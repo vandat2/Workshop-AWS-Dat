@@ -1,69 +1,71 @@
 ---
-title: "Event 3"
+title: "Event 2"
 date: 2024-01-01
-weight: 3
+weight: 1
 chapter: false
-pre: " <b> 4.3. </b> "
+pre: " <b> 4.2. </b> "
 ---
-# Summary Report: “AWS FCAJ Agent Forge - Deepdive Day 2”
+# Summary Report: "AWS FCAJ Agent Forge - Deepdive Day 1"
 
 ### Event Objectives
 
-* **Continuing the learning path from Day 1** , diving deep into three advanced components of the Agentic AI system on Amazon Bedrock Agent Core: Memory, Observability, and Evaluation.
-* **Analyzing auxiliary features (extensions)** that enhance the power of AI Agents, such as Policy, Browser, Code Interpreter, Payment, Registry, and the Optimization process.
-* **Combining practical application (Hands-on Lab)** to directly deploy an AI Agent integrated with Tools and configure Agent Core Memory.
+- Provide a comprehensive overview of the Agentic AI ecosystem and the levels of autonomy in artificial intelligence.
+- Deep dive into the Amazon Bedrock AgentCore L300 infrastructure architecture (advanced level), focusing on three core components: Runtime, Gateway, and Identity.
+- Experience the next-generation programming environment (Vibe Coding) through configuring and setting up a basic AI Agent project.
 
 ### Speakers
 
-* **Nghia** - AWS Expert, continuing to lead the in-depth theoretical foundation and system architecture.
-* **Hai Anh** - AWS Expert, providing detailed guidance on operations using the Kiro tool and Command Line Interface (CLI).
+- **Nghia** - AWS Expert, responsible for presenting in-depth theory on the AgentCore L300 architecture.
+- **Hai Anh** - AWS Expert, directly leading environment configuration and Hands-on Lab sessions.
 
 ### Key Highlights (Core Theory)
 
-#### Memory System
+#### Amazon Bedrock AgentCore L300 Architecture
 
-* **Core Problem:** Context Window limits (e.g., Claude models have a limit of 256k to 1 million tokens) prevent Agents from remembering the entire context if the conversation thread is too long. Memory is the mandatory solution for AI to automatically personalize the user experience.
-* **Memory Classification:**
-  * *Short-term Memory:* Stores raw data of conversation messages.
-  * *Long-term Memory:* Runs asynchronous background processes to extract key insights from Short-term memory and stores them as vectors. Storage strategies include: Summary, User Preference, Semantic, and Episodic^.
-* **Namespace Mechanism:** Designed in a hierarchical format to isolate memory data by Strategy > Actor (user) > Session, thereby accelerating extraction using Semantic Search algorithms and saving tokens.
+- **Runtime:** Provides a fully serverless execution environment, utilizing MicroVM technology to securely isolate each user's communication session. The system auto-scales and bills flexibly based on actual usage traffic.
 
-#### Observability
+- **Identity:** Acts as a critical security layer, controlling identities and access permissions. AgentCore uses a Workload Access Token (WAT) mechanism to encrypt user identities before communicating with external tools, ensuring no sensitive data leakage.
 
-* Provides "eyes" for developers through three pillars: Logs, Traces, and Metrics (using the OpenTelemetry standard).
-* Helps track latency, token costs (cost visibility), and traffic to assess the root cause of issues (e.g., overly long user queries, tool errors, or overloaded GPU infrastructure).
+- **Gateway:** The central management middleware layer that standardizes connections from hundreds of Agents to external APIs. The Gateway integrates a Human-in-the-loop process, allowing human administrators to intervene, approve, or reject critical AI decisions.
 
-#### Evaluation System
+#### Hands-on Lab Content
 
-* Helps detect blind spots such as AI Hallucination and Fault reasoning that lead to incorrect Tool calls.
-* Provides 13 built-in evaluators to score Correctness at 3 levels: Session (Overall objective), Trace/Choice (Accuracy of individual answers), and Span (Optimal level of tool usage). Can operate flexibly in On-demand mode (for Dev environments) and Online mode (for Production environments).
+The practical session focused on setting up the Vibe Coding environment and deploying an Agent through natural language interaction with the Kiro AI assistant. The main steps included:
 
-#### Extended Features
+- **IDE and Environment Setup:** Installing necessary tools (Node.js, Python, AWS CDK, AgentCore CLI) and configuring AWS credentials. Setting up the steering document to provide context for the Kiro assistant.
 
-* **Policy:** Uses the Cedar language to set highly granular permissions, granting access based on the principle of least privilege to block invalid Agent actions in Production environments.
-* **Browser & Code Interpreter:** Virtual environments (sandboxes) provided by AWS enabling Agents to simulate web browsing or write and execute code safely.
+- **Deploy a Basic Agent:** Using the `agentcore create` command for the system to auto-generate the source code. The LLM configuration was adjusted to the `Nova Micro` model to optimize development costs.
 
-### Hands-on Lab
-
-* Install an AI-integrated IDE (like Kiro) combined with configuring the `steering` document (a design standard orientation document specifying the use of the AWS US-West/East Region and the Claude Sonet model).
-* Initialize the project using the CLI command `agent core create` from the Starter Toolkit, structuring the skeleton including Python configuration files and the API system.
-* Configure a low-cost model (`Nova Micro`) in the `LLM.py` file to optimize costs during development practice.
-* Declare Strands Agent Tools in the System Prompt to program tools for the AI to look up virtual order statuses (Refund and Return Assistant).
-* Create storage functionality via CLI using the command integrating the Memory Module, aiming for the Agent to remember the user's context.
-* Launch the testing environment Agent Runtime Endpoint (Local Web Server) via the `agent core dev` command to communicate directly with the LLM API.
+- **Launch Local Testing Environment:** After the source code was generated, navigate the terminal to the project's root directory and launch the local development environment using the `agentcore dev` command.
 
 ### Key Takeaways & Applications
 
-* **RAG Data Management Strategy:** The lesson on Namespace structure and Semantic Search in partitioning long-term data (Long-term Memory) is a perfect solution to apply immediately to the Legal Assistant Chatbot project. Instead of letting the Agent search through a massive Vector Database, hierarchically structuring legal documents (e.g., by domain -> department -> circular) will significantly save tokens and reduce latency.
-* **Secure Authorization (Policy):** Using access control languages (like Cedar) brings a mindset of strict security mechanisms (Guardrails). When integrated with the AWS architecture, this prevents situations where AI arbitrarily modifies data inside the RDS PostgreSQL database or leaks sensitive internal policies.
-* **Standardizing Model Evaluation (Evaluation):** Instead of merely evaluating the Chatbot by asking a few intuitive questions, I realized the necessity of building a standardized evaluation set grounded in Ground Truth, such as Session, Trace, and Span levels. This mindset clearly directs how to set up automated testing scenarios (A/B testing) and use the Observability system to continuously optimize the development lifecycle of an AI Agent (Red Teaming, Optimization).
+#### Paradigm Shift in Software Development
+
+- **The Power of Vibe Coding:** Although only taking the initial setup steps, observing the AI IDE automatically read the context and generate the Agent source code demonstrated a clear shift from "manual coding" to "describing solutions."
+
+- **Cloud Cost Optimization:** The skill of customizing LLM configuration files to switch to compact, low-cost models during the local testing phase is a highly practical reflex to avoid unexpected costs when working on a personal account.
+
+#### The Reality of Cloud Infrastructure Deployment (IaC)
+
+The agonizing wait when running the `agentcore dev` command is a practical testament that automating cloud infrastructure deployment never happens instantly. This experience brings a hard-learned lesson about the necessity of carefully estimating deployment time when designing and operating complex RAG systems or Chatbots in the future, preventing service disruptions for end users.
+
+### Applications in Work & Study
+
+- **Upgrading Security for RAG Architecture:** The Identity concept and Workload Access Token (WAT) mechanism from AgentCore provide an excellent template for securing Chatbot systems. By setting up a similar Gateway layer, data retrieval workflows and calls to Amazon Bedrock will be strictly identity-controlled, ensuring privacy and secure access authorization.
+
+- **Optimizing the Development Process with Vibe Coding:** Leveraging AI-integrated IDEs (like Kiro) completely changes the approach to building APIs or configuring LangChain. Instead of wasting time writing boilerplate code, natural language can be used for the AI to auto-generate code, thereby dedicating time to solving tougher problems regarding processing flows and performance optimization.
+
+- **More Efficient Cloud Infrastructure Management (IaC):** The experience of waiting for configuration from the `agentcore dev` command is a practical lesson in resource management. When building Ingestion pipelines to store documents on S3, SQS, or DynamoDB, applying infrastructure automation needs to be systematically planned, with clear separation between development and production environments to prevent cloud resource provisioning time from disrupting the testing process.
+
+### Event Experiences and Reflections
+
+- **The Harsh Reality of Cloud Deployment:** The most memorable highlight wasn't necessarily the smooth theories, but the moment the entire auditorium "stared at the screen" waiting for the system to run the `agentcore dev` command. This experience reflects a very typical truth of the software engineering profession: cloud infrastructure automation is powerful, but actual resource provisioning takes time and always requires patience.
+
+- **The Shift from "Manual Coder" to "Solution Architect":** Witnessing the AI read and understand the steering document to auto-setup the entire project skeleton provided a fresh perspective. Modern developers are gradually stepping away from meticulously typing syntax, moving toward the role of a director—where skills in describing problems, designing systems, and directing business logic flows become more crucial than ever.
+
+- **The Foundational Stepping Stone is the Biggest Challenge:** The fact that the entire practical time was consumed by environment preparation (installing CLI, CDK, configuring Access Keys) shows that the biggest barrier when approaching new Cloud technologies usually doesn't lie in the code, but in setting up the ecosystem. This reflection helps me better prepare my mindset and troubleshooting skills for upcoming complex projects.
 
 #### Some event photos
 
-![1786335187091](image/_index/1786335187091.jpg)
-
-![1786335194723](image/_index/1786335194723.jpg)
-
-![1786335203844](image/_index/1786335203844.jpg)
-
-![1786335210350](image/_index/1786335210350.jpg)
+![1786503090785](image/_index.vi/1786503090785.jpg)

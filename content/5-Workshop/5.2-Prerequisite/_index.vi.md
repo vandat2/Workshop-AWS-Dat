@@ -5,7 +5,7 @@ weight: 2
 chapter: false
 pre: " <b> 5.2. </b> "
 ---
-# Prerequisites — Các bước chuẩn bị
+# Prerequisites - Các bước chuẩn bị
 
 ## 5.2.1. Chuẩn bị source code
 

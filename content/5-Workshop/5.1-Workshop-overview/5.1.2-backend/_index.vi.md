@@ -38,7 +38,7 @@ pre: " <b> 5.1.2 </b> "
 
 ## Các flow Backend
 
-### Flow 1 — Hỏi đáp demo
+### Flow 1 - Hỏi đáp demo
 
 Đường chính Streamlit → api.main → QAService.
 
@@ -54,7 +54,7 @@ pre: " <b> 5.1.2 </b> "
 
 ![1786490993207](image/_index.vi/1786490993207.png)
 
-### Flow 2 — Build index
+### Flow 2 - Build index
 
 Chạy qua scripts/build_index.py hoặc pipeline.build_index_pipeline.
 
@@ -68,7 +68,7 @@ Chạy qua scripts/build_index.py hoặc pipeline.build_index_pipeline.
 
 ![1786491027197](image/_index.vi/1786491027197.png)
 
-### Flow 3 — Ingestion serverless
+### Flow 3 - Ingestion serverless
 
 Khi admin upload file lên S3.
 
@@ -81,7 +81,7 @@ Khi admin upload file lên S3.
 
 ![1786491049949](image/_index.vi/1786491049949.png)
 
-### Flow 4 — API có Cognito
+### Flow 4 - API có Cognito
 
 Đường api.app khi bật xác thực.
 
@@ -116,7 +116,7 @@ Module chính trong **src/rag_core/**:
 
 ## Auth
 
-- **Streamlit:** username/password băm trong app DB — không dùng Cognito trên UI demo
+- **Streamlit:** username/password băm trong app DB 
 - **/api/*:** Cognito JWT qua src/api/auth.py; header Authorization Bearer
-- **AUTH_DISABLED=true:** tạo user giả có đủ group admins/editors/users — chỉ cho compose/dev gắn Streamlit
+- **AUTH_DISABLED=true:** tạo user giả có đủ group admins/editors/users chỉ cho compose/dev gắn Streamlit
 - Cognito admin: src/services/cognito_admin.py

@@ -77,14 +77,14 @@ User authentication via **Amazon Cognito** (users/editors/admins groups). Conver
 
 **Implementation Phases**
 
-| Phase                         | Content                                    | Timeline   |
+| Phase                         | Content | Timeline |
 | ----------------------------- | ------------------------------------------ | ---------- |
 | 1. Research & local prototype | RAG pipeline, SQLite vector store, FastAPI | Weeks 4–5 |
-| 2. Basic AWS integration      | S3 sync, Docker, Chainlit                  | Weeks 6–7 |
-| 3. Production data layer      | RDS pgvector, Bedrock                      | Week 7     |
-| 4. Auth & foundation IaC      | Cognito, DynamoDB, CloudFormation stack    | Week 8     |
-| 5. Serverless ingestion       | S3 → SQS → Lambda → RDS                 | Week 8     |
-| 6. Optimization & reporting   | Benchmark, CloudWatch, finalize report     | Week 8     |
+| 2. Basic AWS integration | S3 sync, Docker, Chainlit | Weeks 6–7 |
+| 3. Production data layer | RDS pgvector, Bedrock | Week 7 |
+| 4. Auth & foundation IaC | Cognito, DynamoDB, CloudFormation stack | Week 8 |
+| 5. Serverless ingestion | S3 → SQS → Lambda → RDS | Week 8 |
+| 6. Optimization & reporting | Benchmark, CloudWatch, finalize report | Week 8 |
 
 **Technical Requirements**
 
@@ -96,10 +96,10 @@ User authentication via **Amazon Cognito** (users/editors/admins groups). Conver
 
 **Deployment Links**
 
-| Type                        | Link                                                                                              |
+| Type | Link |
 | --------------------------- | ------------------------------------------------------------------------------------------------- |
-| **Repository**        | [github.com/KhanhKoy/vietnamese-legal-llmops](https://github.com/KhanhKoy/vietnamese-legal-llmops) |
-| **Production (demo)** | [http://18.143.187.153:8501/](http://18.143.187.153:8501/)                                         |
+| **Repository** | [github.com/KhanhKoy/vietnamese-legal-llmops](https://github.com/KhanhKoy/vietnamese-legal-llmops) |
+| **Production (demo)** | [http://18.143.187.153:8501/](http://18.143.187.153:8501/) |
 
 Source code includes src/rag_core/, src/api/, infra/foundation.yaml, deploy/Dockerfile. The demo environment runs on EC2 (ap-southeast-1) with a Streamlit UI, connected to RDS pgvector and Bedrock.
 
@@ -113,29 +113,29 @@ Source code includes src/rag_core/, src/api/, infra/foundation.yaml, deploy/Dock
 
 ### 6. Budget Estimation (dev/staging, ap-southeast-1)
 
-| Item                                       | Estimated cost/month         |
+| Item | Estimated cost/month |
 | ------------------------------------------ | ---------------------------- |
-| EC2 t3a.small                              | ~$14 USD                     |
-| RDS db.t3.micro PostgreSQL                 | ~$15 USD                     |
-| Amazon Bedrock (embed + LLM, ~10K queries) | ~$5–20 USD                  |
-| S3 Standard (~10 GB)                       | ~$0.25 USD                   |
-| DynamoDB on-demand                         | ~$1 USD                      |
-| Lambda + SQS                               | ~$1 USD                      |
-| Cognito                                    | Free tier (< 50K MAU)        |
-| CloudWatch + SNS                           | ~$2 USD                      |
-| **Total estimate**                   | **~$40–55 USD/month** |
+| EC2 t3a.small | ~$14 USD |
+| RDS db.t3.micro PostgreSQL | ~$15 USD |
+| Amazon Bedrock (embed + LLM, ~10K queries) | ~$5–20 USD |
+| S3 Standard (~10 GB) | ~$0.25 USD |
+| DynamoDB on-demand | ~$1 USD |
+| Lambda + SQS | ~$1 USD |
+| Cognito | Free tier (< 50K MAU) |
+| CloudWatch + SNS | ~$2 USD |
+| **Total estimate** | **~$40–55 USD/month** |
 
 *Note:* Production costs with ALB, 2 EC2 instances, RDS Multi-AZ will be higher. Can be reduced with ECS Fargate Spot, RDS Reserved Instance, or shutting down instances outside lab hours.
 
 ### 7. Risk Assessment
 
-| Risk                           | Impact | Mitigation                                                          |
+| Risk | Impact | Mitigation |
 | ------------------------------ | ------ | ------------------------------------------------------------------- |
-| LLM hallucination              | High   | RAG requires context citations; prompt refuses when data is missing |
-| Bedrock cost over budget       | Medium | CloudWatch alarms, token limits, cache common questions             |
-| Outdated legal corpus          | High   | Admin upload pipeline, S3 versioning, soft delete                   |
-| High latency with large corpus | Medium | pgvector index (IVFFlat/HNSW), RDS Proxy, periodic benchmarking     |
-| Credential exposure            | High   | Secrets Manager, IAM roles for EC2/Lambda, no hard-coded keys       |
+| LLM hallucination | High | RAG requires context citations; prompt refuses when data is missing |
+| Bedrock cost over budget | Medium | CloudWatch alarms, token limits, cache common questions |
+| Outdated legal corpus | High | Admin upload pipeline, S3 versioning, soft delete |
+| High latency with large corpus | Medium | pgvector index (IVFFlat/HNSW), RDS Proxy, periodic benchmarking |
+| Credential exposure | High | Secrets Manager, IAM roles for EC2/Lambda, no hard-coded keys |
 
 ### 8. Expected Outcomes
 

@@ -1,4 +1,3 @@
-
 ---
 title: "Backend"
 date: 2024-01-01
@@ -39,7 +38,7 @@ pre: " <b> 5.1.2 </b> "
 
 ## Backend flows
 
-### Flow 1 — Demo Q&A
+### Flow 1 - Demo Q&A
 
 Main path: Streamlit → api.main → QAService.
 
@@ -55,7 +54,7 @@ Main path: Streamlit → api.main → QAService.
 
 ![1786490993207](image/_index.vi/1786490993207.png)
 
-### Flow 2 — Build index
+### Flow 2 - Build index
 
 Run through scripts/build_index.py or pipeline.build_index_pipeline.
 
@@ -69,7 +68,7 @@ Run through scripts/build_index.py or pipeline.build_index_pipeline.
 
 ![1786491027197](image/_index.vi/1786491027197.png)
 
-### Flow 3 — Serverless ingestion
+### Flow 3 - Serverless ingestion
 
 When an admin uploads a file to S3.
 
@@ -82,7 +81,7 @@ When an admin uploads a file to S3.
 
 ![1786491049949](image/_index.vi/1786491049949.png)
 
-### Flow 4 — Cognito-protected API
+### Flow 4 - Cognito-protected API
 
 The api.app path when authentication is enabled.
 
@@ -117,7 +116,7 @@ Main modules under **src/rag_core/**:
 
 ## Auth
 
-- **Streamlit:** hashed username/password in the app DB — Cognito is not used in the demo UI
+- **Streamlit:** hashed username/password in the app DB
 - **/api/*:** Cognito JWT via src/api/auth.py; Authorization Bearer header
-- **AUTH_DISABLED=true:** synthetic user with admins/editors/users groups — only for Streamlit compose/dev
+- **AUTH_DISABLED=true:** synthetic user with admins/editors/users groups only for Streamlit compose/dev
 - Cognito admin helpers: src/services/cognito_admin.py

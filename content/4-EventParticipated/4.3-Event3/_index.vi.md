@@ -1,69 +1,51 @@
 ---
-title: "Event 3"
+title: "Event 2"
 date: 2024-01-01
-weight: 3
+weight: 1
 chapter: false
 pre: " <b> 4.3. </b> "
 ---
-# Bài thu hoạch “AWS FCAJ Agent Forge - Deepdive Ngày 2”
+# Bài thu hoạch "AWS FCAJ Agent Forge - Deepdive Ngày 1"
 
 ### Mục Đích Của Sự Kiện
 
-- Tiếp nối lộ trình kiến thức của Ngày 1, đi sâu vào ba thành phần nâng cao của hệ thống Agentic AI trên Amazon Bedrock Agent Core: Memory (Bộ nhớ), Observability (Giám sát) và Evaluation (Đánh giá).
-- Phân tích các tính năng phụ trợ (phần mở rộng) giúp tăng cường sức mạnh cho AI Agent như Policy, Browser, Code Interpreter, Payment, Registry, và quá trình Optimization.
-- Kết hợp thực hành (Hands-on Lab) triển khai trực tiếp một AI Agent có tích hợp công cụ (Tools) và cấu hình Agent Core Memory.
+- Giới thiệu tổng quan về hệ sinh thái Agentic AI và các cấp độ tự chủ của trí tuệ nhân tạo.
+- Phân tích chuyên sâu kiến trúc Amazon Bedrock AgentCore ở cấp độ L300, tập trung vào ba thành phần cốt lõi: Runtime, Gateway và Identity.
+- Trải nghiệm môi trường lập trình thế hệ mới (Vibe Coding) thông qua việc cấu hình và thiết lập dự án AI Agent cơ bản.
 
 ### Danh Sách Diễn Giả
 
-* **Nghĩa** - Chuyên gia từ AWS, tiếp tục dẫn dắt chuyên sâu về nền tảng lý thuyết và kiến trúc hệ thống.
-* **Hải Anh** - Chuyên gia từ AWS, hướng dẫn chi tiết quá trình thao tác trên công cụ Kiro và dòng lệnh (CLI).
+- **Nghĩa** - Chuyên gia AWS, phụ trách trình bày lý thuyết chuyên sâu về kiến trúc AgentCore L300.
+- **Hải Anh** - Chuyên gia AWS, trực tiếp dẫn dắt phần cấu hình môi trường và thực hành (Hands-on Lab).
 
-### Nội Dung Nổi Bật (Lý Thuyết Chuyên Sâu)
+### Nội Dung Nổi Bật (Lý Thuyết Cốt Lõi)
 
-#### Hệ thống Bộ nhớ (Memory)
+#### Kiến Trúc Amazon Bedrock AgentCore L300
 
-* **Vấn đề cốt lõi:** Các giới hạn về Context Window (ví dụ: mô hình Claude có giới hạn từ 256k đến 1 triệu token) khiến Agent không thể nhớ toàn bộ ngữ cảnh nếu chuỗi hội thoại quá dài. Memory là giải pháp bắt buộc để AI tự động cá nhân hóa trải nghiệm người dùng.
-* **Phân loại bộ nhớ:**
-  * *Short-term Memory:* Lưu trữ nguyên bản (raw data) các đoạn tin nhắn hội thoại.
-  * *Long-term Memory:* Chạy tiến trình nền bất đồng bộ (asynchronously) để trích xuất những ý chính (key insights) từ Short-term và lưu dưới dạng vector. Các chiến lược lưu trữ (strategy) bao gồm: Summary (Tóm tắt), User Preference (Sở thích người dùng), Semantic (Kiến thức ngữ nghĩa) và Episodic (Ghi nhận hành động)^.
-* **Cơ chế Namespace:** Được thiết kế theo dạng thư mục phân cấp (Hierarchical format) giúp phân lập dữ liệu bộ nhớ theo Strategy > Actor (người dùng) > Session, từ đó tăng tốc độ trích xuất bằng thuật toán Semantic Search và tiết kiệm token.
+- **Runtime:** Cung cấp môi trường thực thi hoàn toàn không máy chủ (Serverless), sử dụng công nghệ MicroVM để cách ly bảo mật từng phiên giao tiếp của người dùng. Hệ thống tự động mở rộng (auto-scaling) và tính phí linh hoạt dựa trên lưu lượng sử dụng thực tế.
 
-#### Khả năng Giám sát (Observability)
+- **Identity:** Đóng vai trò là lớp bảo mật then chốt, kiểm soát danh tính và quyền hạn truy cập. AgentCore sử dụng cơ chế Workload Access Token (WAT) để mã hóa danh tính người dùng trước khi giao tiếp với các công cụ bên ngoài, đảm bảo không rò rỉ dữ liệu nhạy cảm.
 
-* Cung cấp "đôi mắt" cho các nhà phát triển thông qua ba trụ cột: Logs, Traces, và Metrics (sử dụng chuẩn OpenTelemetry).
-* Giúp theo dõi độ trễ (latency), chi phí token (cost visibility), lưu lượng truy cập (traffic) để đánh giá nguồn gốc vấn đề (do người dùng truy vấn quá dài, do lỗi tool, hay do hạ tầng GPU quá tải).
+- **Gateway:** Lớp middleware quản trị tập trung, chuẩn hóa kết nối từ hàng trăm Agent đến các API bên ngoài. Gateway tích hợp quy trình Human-in-the-loop, cho phép quản trị viên can thiệp phê duyệt hoặc từ chối các quyết định quan trọng của AI.
 
-#### Hệ thống Đánh giá (Evaluation)
+#### Nội Dung Thực Hành (Hands-on Lab)
 
-* Hỗ trợ phát hiện các điểm mù như AI ảo giác (Hallucination), suy luận sai (Fault reasoning) dẫn đến việc gọi nhầm công cụ (Tool).
-* Cung cấp 13 bộ công cụ đánh giá tích hợp (built-in evaluators) chấm điểm độ chính xác (Correctness) trên 3 cấp độ: Session (Tổng thể mục tiêu), Trace/Choice (Độ chính xác của từng câu trả lời), và Span (Mức độ tối ưu khi sử dụng tool). Có thể vận hành linh hoạt ở chế độ On-demand (dành cho môi trường Dev) và Online (dành cho môi trường Production).
+Phần thực hành tập trung vào thiết lập môi trường Vibe Coding và triển khai Agent thông qua giao tiếp ngôn ngữ tự nhiên với trợ lý AI Kiro. Các bước chính bao gồm:
 
-#### Các tính năng Mở Rộng
+- **Thiết lập IDE và môi trường:** Cài đặt các công cụ cần thiết (Node.js, Python, AWS CDK, AgentCore CLI) và cấu hình thông tin xác thực AWS. Thiết lập tài liệu định hướng (steering document) để cung cấp ngữ cảnh cho trợ lý Kiro.
 
-* **Policy (Chính sách bảo mật):** Sử dụng ngôn ngữ Cedar để thiết lập các quyền hạn cực kỳ chi tiết, cấp quyền theo nguyên tắc đặc quyền tối thiểu (least privilege) nhằm chặn các hành động không hợp lệ của Agent trên môi trường Production.
-* **Browser & Code Interpreter:** Môi trường ảo (sandbox) do AWS cung cấp để Agent có thể mô phỏng duyệt web hoặc tự viết và chạy code một cách an toàn.
+- **Khởi tạo Agent cơ bản (Deploy a basic agent):** Sử dụng lệnh `agentcore create` để hệ thống tự động sinh mã nguồn. Cấu hình LLM được điều chỉnh sang mô hình `Nova Micro` nhằm tối ưu chi phí phát triển.
 
-### Triển Khai Thực Tế (Hands-on Lab)
+- **Khởi chạy môi trường kiểm thử cục bộ:** Sau khi mã nguồn được tạo, di chuyển terminal vào thư mục gốc của dự án và khởi chạy môi trường phát triển cục bộ bằng lệnh `agentcore dev`.
 
-* Cài đặt IDE tích hợp trí tuệ nhân tạo (như Kiro) kết hợp cấu hình `steering` document (tài liệu định hướng chuẩn mực thiết kế, quy định sử dụng AWS Region US-West/East và mô hình Claude Sonet).
-* Khởi tạo dự án bằng lệnh CLI `agent core create` từ Starter Toolkit, cấu trúc nên khung sườn (skeleton) bao gồm các tệp cấu hình Python và hệ thống API.
-* Cấu hình mô hình chi phí thấp (`Nova Micro`) trong tệp `LLM.py` để tối ưu chi phí trong quá trình thực hành phát triển.
-* Khai báo Strands Agent Tools trong System Prompt để lập trình công cụ cho AI tra cứu tình trạng đơn hàng ảo (Refund and Return Assistant).
-* Tạo tính năng lưu trữ qua CLI bằng lệnh tích hợp Memory Module, hướng tới việc Agent có thể ghi nhớ bối cảnh người dùng.
-* Khởi động môi trường kiểm thử Agent Runtime Endpoint (Local Web Server) qua lệnh `agent core dev` để giao tiếp trực tiếp với LLM API.
+### Ứng Dụng Vào Công Việc & Học Tập
 
-### Những Gì Học Được & Ứng Dụng
+- **Nâng cấp bảo mật cho kiến trúc RAG:** Khái niệm Identity và cơ chế Workload Access Token (WAT) từ AgentCore cung cấp một khuôn mẫu xuất sắc để ứng dụng vào bảo mật hệ thống Chatbot. Bằng cách thiết lập lớp Gateway tương tự, các luồng truy xuất dữ liệu và lệnh gọi đến Amazon Bedrock sẽ được kiểm soát định danh chặt chẽ, đảm bảo tính riêng tư và phân quyền truy cập an toàn.
 
-* **Chiến lược Quản trị Dữ liệu RAG:** Bài học về cấu trúc Namespace và Semantic Search trong việc phân vùng dữ liệu dài hạn (Long-term Memory) là giải pháp hoàn hảo để áp dụng ngay vào dự án Chatbot Trợ lý Pháp luật. Thay vì để Agent tìm kiếm trong một kho tri thức vector (Vector Database) khổng lồ, việc cấu trúc phân tầng các tài liệu luật pháp (ví dụ: theo lĩnh vực -> ban ngành -> thông tư) sẽ tiết kiệm số lượng token đáng kể và giảm độ trễ (latency).
-* **Phân Quyền An Toàn (Policy):** Việc sử dụng ngôn ngữ kiểm soát quyền (như Cedar) mang lại tư duy về cơ chế bảo mật (Guardrails) nghiêm ngặt. Khi tích hợp cùng kiến trúc AWS, điều này ngăn chặn tình huống AI tự ý thay đổi dữ liệu bên trong CSDL RDS PostgreSQL hay tiết lộ những chính sách nội bộ nhạy cảm.
-* **Tiêu chuẩn Hóa Đánh Giá Mô Hình (Evaluation):** Thay vì chỉ đánh giá Chatbot bằng cách tự đặt vài câu hỏi theo cảm tính, tôi nhận thấy sự cần thiết của việc xây dựng một bộ tiêu chuẩn đánh giá có cơ sở (Ground Truth) như cấp độ Session, Trace, Span. Tư duy này định hướng rõ ràng cách thiết lập kịch bản kiểm thử tự động (A/B testing) và sử dụng hệ thống Observability để tối ưu hóa liên tục vòng đời phát triển của một AI Agent (Red Teaming, Optimization).
+- **Tối ưu hóa quy trình phát triển với Vibe Coding:** Việc tận dụng các IDE tích hợp AI (như Kiro) thay đổi hoàn toàn cách tiếp cận khi xây dựng API hay cấu hình LangChain. Thay vì mất thời gian viết các đoạn mã boilerplate, có thể dùng ngôn ngữ tự nhiên để AI tự động sinh mã, từ đó dành toàn bộ thời gian để giải quyết các bài toán hóc búa hơn về luồng xử lý và tối ưu hiệu năng.
+
+- **Quản lý hạ tầng đám mây (IaC) hiệu quả hơn:** Trải nghiệm chờ đợi cấu hình từ lệnh `agentcore dev` là bài học thực tế về quản lý tài nguyên. Khi xây dựng luồng Ingestion lưu trữ tài liệu lên S3, SQS hay DynamoDB, việc ứng dụng tự động hóa hạ tầng cần được quy hoạch bài bản, tách biệt rõ ràng môi trường phát triển và vận hành để tránh thời gian cấp phát tài nguyên đám mây làm gián đoạn quá trình kiểm thử.
 
 #### Một số hình ảnh khi tham gia sự kiện
 
-![1786334685766](image/_index.vi/1786334685766.jpg)
-
-![1786334702703](image/_index.vi/1786334702703.jpg)
-
-![1786334714583](image/_index.vi/1786334714583.jpg)
-
-![1786334724307](image/_index.vi/1786334724307.jpg)
+![1786503090785](image/_index.vi/1786503090785.jpg)

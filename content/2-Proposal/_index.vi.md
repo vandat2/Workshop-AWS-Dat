@@ -9,7 +9,7 @@ pre: " <b> 2. </b> "
 
 ## Giải pháp hỏi đáp pháp luật Việt Nam trên AWS
 
-### 1. Tóm tắt điều hành
+### 1. Tóm tắt kiến trúc
 
 Vietnamese Legal RAG Chatbot là hệ thống cho phép người dùng đặt câu hỏi bằng tiếng Việt về các văn bản pháp luật (Luật, Nghị định, Thông tư...) và nhận câu trả lời có trích dẫn nguồn. Hệ thống sử dụng pipeline RAG: truy xuất các đoạn văn bản luật liên quan từ cơ sở vector, sau đó gửi sang mô hình ngôn ngữ lớn (LLM) trên Amazon Bedrock để sinh câu trả lời chính xác, tránh hallucination so với chatbot thuần LLM.
 
@@ -17,7 +17,7 @@ Giải pháp hướng tới quy mô nội bộ (phòng ban pháp chế, trung t�
 
 Demo triển khai: http://18.143.187.153:8501/ (Streamlit trên EC2, ap-southeast-1)
 
-### 2. Tuyên bố vấn đề
+### 2. Lý do chọn đề tài
 
 **Vấn đề hiện tại**
 

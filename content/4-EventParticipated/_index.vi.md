@@ -9,6 +9,16 @@ Trong quá trình thực tập, em đã tham gia 3 events, với mỗi event là
 
 ### [Event 1](4.1-Event1/)
 
+&emsp;**Tên sự kiện:** FCAJ Community Day - June 2026
+
+&emsp;**Thời gian:** 09:00 ngày 27/06/2026
+
+&emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
+
+&emsp;**Vai trò trong sự kiện:** Người tham dự
+
+### [Event 2](4.2-Event2/)
+
 &emsp;**Tên sự kiện:** FCAJ - AGENTIC AI BUILD WEEK
 
 &emsp;**Thời gian:** 09:00 ngày 25/07/2026
@@ -17,21 +27,11 @@ Trong quá trình thực tập, em đã tham gia 3 events, với mỗi event là
 
 &emsp;**Vai trò trong sự kiện:** Người tham dự
 
-### [Event 2](4.2-Event2/)
+### [Event 3](4.3-Event3/)
 
 &emsp;**Tên sự kiện:** AWS FCAJ Agent Forge - Deepdive Ngày 1
 
 &emsp;**Thời gian:** 09:00 ngày 01/08/2026
-
-&emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
-
-&emsp;**Vai trò trong sự kiện:** Người tham dự
-
-### [Event 3](4.3-Event3/)
-
-&emsp;**Tên sự kiện:** AWS FCAJ Agent Forge - Deepdive Ngày 2
-
-&emsp;**Thời gian:** 09:00 ngày 08/08/2026
 
 &emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
 

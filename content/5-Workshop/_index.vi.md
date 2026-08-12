@@ -5,12 +5,11 @@ weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
-
 ## LLMOps trên AWS với Vietnamese Legal RAG Chatbot
 
 ## Tổng quan
 
-Workshop này trình bày toàn bộ quy trình xây dựng, triển khai và vận hành **Vietnamese Legal RAG Chatbot** — hệ thống hỏi đáp pháp luật Việt Nam dựa trên Retrieval-Augmented Generation (RAG) — trên nền tảng Amazon Web Services (AWS).
+Workshop này trình bày toàn bộ quy trình xây dựng, triển khai và vận hành **Vietnamese Legal RAG Chatbot** hệ thống hỏi đáp pháp luật Việt Nam dựa trên Retrieval-Augmented Generation (RAG) trên nền tảng Amazon Web Services (AWS).
 
 ## Nội dung
 
